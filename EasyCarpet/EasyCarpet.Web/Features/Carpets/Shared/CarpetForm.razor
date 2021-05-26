@@ -1,0 +1,141 @@
+﻿@using EasyCarpet.Web.Helpers;
+@using EasyCarpet.Shared;
+@using EasyCarpet.Shared.Features.Carpets; 
+
+@if (_carpet != null)
+{
+    <EditForm Model="@_carpet" OnValidSubmit="HandleSubmitAsync">
+        <FluentValidationValidator/>
+        <ServerSideValidator @ref="_serverSideValidator" />
+
+        <MudCard >
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@_transactionMode</MudText>
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField @bind-Value="_carpet.Name" Label="Name" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _carpet.Name)"></MudTextField>
+                <MudTextField @bind-Value="_carpet.Brand" Label="Brand" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _carpet.Brand)"></MudTextField>
+                <MudTextField @bind-Value="_carpet.Image" Label="Image" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _carpet.Image)"></MudTextField>
+                <MudTextField @bind-Value="_carpet.Description" Label="Description" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _carpet.Description)"></MudTextField>
+                <MudTextField @bind-Value="_carpet.Style" Label="Style" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _carpet.Style)"></MudTextField>
+                <MudNumericField @bind-Value="_carpet.Width" Label="Width" Margin="Margin.Normal"
+                                 For="@(() => _carpet.Width)"></MudNumericField>
+                <MudNumericField @bind-Value="_carpet.Length" Label="Length" Margin="Margin.Normal"
+                                 For="@(() => _carpet.Length)"></MudNumericField>
+                <MudNumericField @bind-Value="_carpet.SquareYardPrice" Label="Price per Yard" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Step=".01m" Margin="Margin.Normal"
+                                 For="@(() => _carpet.SquareYardPrice)"></MudNumericField>
+
+                <MudItem>
+                    <InputFile id="fileInput" hidden OnChange="UploadFiles" />
+                    <div>
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Text"
+                                   Color="Color.Primary"
+                                   Size="Size.Small"
+                                   StartIcon="@Icons.Filled.CloudUpload"
+                                   for="fileInput">
+                            @localizer["Upload"]
+                        </MudButton>
+                        @if (!string.IsNullOrEmpty(AddEditProductModel.ImageDataURL))
+                        {
+                            <MudButton Variant="Variant.Text"
+                                       Color="Color.Info"
+                                       StartIcon="@Icons.Filled.RemoveRedEye"
+                                       Size="Size.Small"
+                                       Link="@(AddEditProductModel.ImageDataURL)" Target="_blank">
+                                @localizer["View"]
+                            </MudButton>
+                            <MudButton Variant="Variant.Text"
+                                       Color="Color.Error"
+                                       StartIcon="@Icons.Filled.Delete"
+                                       Size="Size.Small"
+                                       OnClick="DeleteAsync">
+                                @localizer["Delete"]
+                            </MudButton>
+
+                        }
+                    </div>
+                </MudItem>
+
+
+            </MudCardContent>
+            <MudCardActions Class="d-flex justify-end py-2 px-1">
+                @if (_isEditing)
+                {
+                    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Delete">Delete</MudButton>
+                }
+
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel" Class="ml-4" Disabled="IsProcessing">Cancel</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-2" Disabled="IsProcessing">Save</MudButton>
+            </MudCardActions>
+        </MudCard>
+
+    </EditForm>
+}
+
+@code {
+
+    private ServerSideValidator _serverSideValidator;
+    private bool _isEditing = false;
+    private string _transactionMode = "Adding a Carpet";
+    private CarpetFormModel _carpet = new CarpetFormModel();
+
+    [Parameter] public CarpetFormModel Carpet { get; set; }
+    [Parameter] public bool IsProcessing { get; set; } = false;
+    [Parameter] public CommandResponse CommandResponse { get; set; }
+    [Parameter] public Action OnCancel { get; set; }
+    [Parameter] public Func<Guid, Task> OnDelete { get; set; }
+    [Parameter] public Func<CarpetFormModel, Task> OnSubmit { get; set; }
+
+    private async Task HandleSubmitAsync() => await OnSubmit(_carpet);
+    private void Cancel() => OnCancel();
+    private void Delete() => OnDelete(_carpet.Id);
+
+    protected override void OnParametersSet()
+    {
+        if (Carpet != null)
+        {
+            _carpet.Id = Carpet.Id;
+            _carpet.Brand = Carpet.Brand;
+            _carpet.Description = Carpet.Description;
+            _carpet.Image = Carpet.Image;
+            _carpet.Length = Carpet.Length;
+            _carpet.Name = Carpet.Name;
+            _carpet.SquareYardPrice = Carpet.SquareYardPrice;
+            _carpet.Style = Carpet.Style;
+            _carpet.Width = Carpet.Width;
+
+            _isEditing = true;
+            _transactionMode = "Editing a Carpet";
+        }
+
+
+        if (CommandResponse != null && !CommandResponse.IsSuccessful)
+        {
+            _serverSideValidator.DisplayErrors(CommandResponse.Errors);
+        }
+    }
+
+    private async Task UploadFiles(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+        if (file != null)
+        {
+            var extension = Path.GetExtension(file.Name);
+            var format = "image/png";
+            var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
+            var buffer = new byte[imageFile.Size];
+            await imageFile.OpenReadStream().ReadAsync(buffer);
+        }
+    }
+}

@@ -1,0 +1,77 @@
+﻿@page "/editinstaller/{installerid:guid}"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Installers 
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@inject IDialogService _dialogService
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_isLoading)
+{
+    <MudPaper Elevation="25">
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+        <MudText Color="Color.Info" Typo="Typo.body1"> Loading installer... </MudText>
+    </MudPaper>
+}
+else
+{
+    <InstallerForm Installer="_installer" OnSubmit="Submit" OnCancel="NavigateToList" OnDelete="DeleteAsync"
+                 CommandResponse="_commandResponse" IsProcessing="_isProcessing">
+    </InstallerForm>
+}
+
+@code {
+    private bool _isLoading;
+    private bool _isProcessing = false;
+    private InstallerFormModel _installer = new InstallerFormModel();
+    private CommandResponse _commandResponse;
+
+    [Parameter] public Guid InstallerId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        _isLoading = true;
+        _installer = (await _mediator.Send(new GetInstallerRequest(InstallerId))).Installer;
+        _isLoading = false;
+    }
+
+    private async Task Submit(InstallerFormModel installer)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new EditInstallerRequest(installer));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteAsync(Guid installerId)
+    {
+        if ((await _dialogService.ShowMessageBox("Delete", "Are you sure?", yesText: "Delete", cancelText: "Cancel")).Value)
+        {
+            await _mediator.Send(new DeleteInstallerRequest(_installer.Id));
+            NavigateToList();
+
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo("/listinstaller");
+    }
+}

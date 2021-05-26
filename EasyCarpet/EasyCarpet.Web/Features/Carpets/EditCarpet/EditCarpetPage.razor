@@ -1,0 +1,80 @@
+﻿@page "/editcarpet/{carpetid:guid}"
+@using MediatR
+@using System.IO;
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared;
+@using EasyCarpet.Shared.Features.Carpets
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@inject IDialogService _dialogService
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_isLoading)
+{
+    <MudPaper Elevation="25">
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+        <MudText Color="Color.Info" Typo="Typo.body1"> Loading carpet... </MudText>
+    </MudPaper>
+}
+else
+{
+    <CarpetForm Carpet="_carpet" OnSubmit="Submit" OnCancel="NavigateToList" OnDelete="DeleteAsync"
+                CommandResponse="_commandResponse" IsProcessing="_isProcessing">
+    </CarpetForm>
+}
+
+@code {
+    private bool _isLoading;
+    private bool _isProcessing = false;
+    private CarpetFormModel _carpet = new CarpetFormModel();
+    private CommandResponse _commandResponse;
+
+    public IBrowserFile file { get; set; }
+
+    [Parameter] public Guid CarpetId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        _isLoading = true;
+        _carpet = (await _mediator.Send(new GetCarpetRequest(CarpetId))).Carpet;
+        _isLoading = false;
+    }
+
+    private async Task Submit(CarpetFormModel carpet)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new EditCarpetRequest(carpet));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteAsync(Guid carpetId)
+    {
+        if ((await _dialogService.ShowMessageBox("Delete", "Are you sure?", yesText: "Delete", cancelText: "Cancel")).Value)
+        {
+            await _mediator.Send(new DeleteCarpetRequest(_carpet.Id));
+            NavigateToList();
+
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo($"/viewcarpet/{CarpetId}");
+    }
+}

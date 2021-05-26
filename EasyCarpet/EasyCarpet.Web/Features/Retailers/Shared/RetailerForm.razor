@@ -1,0 +1,89 @@
+﻿@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Retailers
+
+@if (_retailer != null)
+{
+    <EditForm Model="@_retailer" OnValidSubmit="HandleSubmitAsync">
+        <FluentValidationValidator />
+        <ServerSideValidator @ref="_serverSideValidator" />
+
+        <MudCard>
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@_transactionMode</MudText>
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField @bind-Value="_retailer.CompanyName" Label="Company Name" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _retailer.CompanyName)"></MudTextField>
+                <MudTextField @bind-Value="_retailer.Address" Label="Address" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _retailer.Address)"></MudTextField>
+                <MudTextField @bind-Value="_retailer.City" Label="City" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _retailer.City)"></MudTextField>
+                <MudTextField @bind-Value="_retailer.State" Label="State" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _retailer.State)"></MudTextField>
+                <MudTextField @bind-Value="_retailer.PhoneNumber" Label="Phone Number" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _retailer.PhoneNumber)"></MudTextField>
+                <MudTextField @bind-Value="_retailer.Description" Label="Description" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _retailer.Description)"></MudTextField>
+
+            </MudCardContent>
+            <MudCardActions Class="d-flex justify-end py-2 px-1">
+                @if (_isEditing)
+                {
+                    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Delete">Delete</MudButton>
+                }
+
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel" Class="ml-4" Disabled="IsProcessing">Cancel</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-2" Disabled="IsProcessing">Save</MudButton>
+            </MudCardActions>
+        </MudCard>
+
+    </EditForm>
+}
+
+@code {
+
+    private ServerSideValidator _serverSideValidator;
+    private bool _isEditing = false;
+    private string _transactionMode = "Adding a Retailer";
+    private RetailerFormModel _retailer = new RetailerFormModel();
+
+    [Parameter] public RetailerFormModel Retailer { get; set; }
+    [Parameter] public bool IsProcessing { get; set; } = false;
+    [Parameter] public CommandResponse CommandResponse { get; set; }
+    [Parameter] public Action OnCancel { get; set; }
+    [Parameter] public Func<Guid, Task> OnDelete { get; set; }
+    [Parameter] public Func<RetailerFormModel, Task> OnSubmit { get; set; }
+
+    private async Task HandleSubmitAsync() => await OnSubmit(_retailer);
+    private void Cancel() => OnCancel();
+    private void Delete() => OnDelete(_retailer.Id);
+
+    protected override void OnParametersSet()
+    {
+        if (Retailer != null)
+        {
+            _retailer.Id = Retailer.Id;
+            _retailer.CompanyName = Retailer.CompanyName;
+            _retailer.Address = Retailer.Address;
+            _retailer.City = Retailer.City;
+            _retailer.State = Retailer.State;
+            _retailer.Description = Retailer.Description;
+            _retailer.PhoneNumber = Retailer.PhoneNumber;
+
+            _isEditing = true;
+            _transactionMode = "Editing a Retailer";
+        }
+
+
+        if (CommandResponse != null && !CommandResponse.IsSuccessful)
+        {
+            _serverSideValidator.DisplayErrors(CommandResponse.Errors);
+        }
+    }
+}

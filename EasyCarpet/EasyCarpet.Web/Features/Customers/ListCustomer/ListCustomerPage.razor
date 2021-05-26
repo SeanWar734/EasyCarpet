@@ -1,0 +1,54 @@
+﻿@page "/listcustomer"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Customers 
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Customers</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" OnClick="AddContact" />
+    </div>
+
+    <MudText Class="mb-8">List of Customers</MudText>
+
+    @if (_customers == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+    }
+    else
+    {
+        <MudTable Items="@_customers" Hover="true" SortLabel="Sort By" Dense="true">
+            <HeaderContent>
+                <MudTh>First Name</MudTh>
+                <MudTh>Last Name</MudTh>
+                <MudTh>Address</MudTh>
+                <MudTh>City</MudTh>
+                <MudTh>State</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="First Name"><MudLink Href=@($"/editcustomer/{context.Id}")>@context.FirstName</MudLink></MudTd>
+                <MudTd DataLabel="Last Name">@context.LastName</MudTd>
+                <MudTd DataLabel="Address">@context.Address</MudTd>
+                <MudTd DataLabel="City">@context.City</MudTd>
+                <MudTd DataLabel="State">@context.State</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudPaper>
+
+@code {
+    private IEnumerable<ListCustomerDto> _customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _customers = (await _mediator.Send(new ListCustomerRequest())).Customers;
+    }
+
+    private void AddContact()
+    {
+        _navigationManager.NavigateTo("/addcustomer");
+    }
+}

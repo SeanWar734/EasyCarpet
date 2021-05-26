@@ -1,0 +1,77 @@
+﻿@page "/editorder/{orderid:guid}"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Orders 
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@inject IDialogService _dialogService
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_isLoading)
+{
+    <MudPaper Elevation="25">
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+        <MudText Color="Color.Info" Typo="Typo.body1"> Loading order... </MudText>
+    </MudPaper>
+}
+else
+{
+    <OrderForm Order="_order" OnSubmit="Submit" OnCancel="NavigateToList" OnDelete="DeleteAsync"
+                 CommandResponse="_commandResponse" IsProcessing="_isProcessing">
+    </OrderForm>
+}
+
+@code {
+    private bool _isLoading;
+    private bool _isProcessing = false;
+    private OrderFormModel _order = new OrderFormModel();
+    private CommandResponse _commandResponse;
+
+    [Parameter] public Guid OrderId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        _isLoading = true;
+        _order = (await _mediator.Send(new GetOrderRequest(OrderId))).Order;
+        _isLoading = false;
+    }
+
+    private async Task Submit(OrderFormModel order)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new EditOrderRequest(order));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteAsync(Guid orderId)
+    {
+        if ((await _dialogService.ShowMessageBox("Delete", "Are you sure?", yesText: "Delete", cancelText: "Cancel")).Value)
+        {
+            await _mediator.Send(new DeleteOrderRequest(_order.Id));
+            NavigateToList();
+
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo("/listorder");
+    }
+}

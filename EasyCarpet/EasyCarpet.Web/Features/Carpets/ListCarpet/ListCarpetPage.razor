@@ -1,0 +1,54 @@
+﻿@page "/listcarpet"
+@using MediatR
+@using EasyCarpet.Shared.Features.Carpets
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Carpet</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" OnClick="AddContact" />
+    </div>
+
+    <MudText Class="mb-8">List of Carpet</MudText>
+
+    @if (_carpet == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+    }
+    else
+    {
+        <MudTable Items="@_carpet" Hover="true" SortLabel="Sort By" Dense="true">
+            <HeaderContent>
+                <MudTh>Name</MudTh>
+                <MudTh>Brand</MudTh>
+                <MudTh>Style</MudTh>
+                <MudTh>Width</MudTh>
+                <MudTh>Price per Yard</MudTh>
+                <MudTh>Description</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Name"><MudLink Href="@($"/viewcarpet/{context.Id}")">@context.Name</MudLink></MudTd>
+                <MudTd DataLabel="Brand">@context.Brand</MudTd>
+                <MudTd DataLabel="Style">@context.Style</MudTd>
+                <MudTd DataLabel="Width">@context.Width</MudTd>
+                <MudTd DataLabel="Price per Yard">@context.SquareYardPrice</MudTd>
+                <MudTd DataLabel="Description">@context.Description</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudPaper>
+
+@code {
+    private IEnumerable<ListCarpetDto> _carpet;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _carpet = (await _mediator.Send(new ListCarpetRequest())).Carpet;
+    }
+
+    private void AddContact()
+    {
+        _navigationManager.NavigateTo("/addcarpet");
+    }
+}

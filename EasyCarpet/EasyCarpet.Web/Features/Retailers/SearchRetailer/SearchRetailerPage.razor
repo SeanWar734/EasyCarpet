@@ -1,0 +1,104 @@
+﻿@page "/searchretailer"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared;
+@using EasyCarpet.Shared.Features.Retailers
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@implements IDisposable
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_showResults)
+{
+    <SearchRetailerResult Retailers="_retailers" OnBackToSearch="BackToSearch"></SearchRetailerResult>
+}
+else
+{
+    <SearchRetailerForm SearchRetailer="_searchRetailer" OnCancel="Cancel" OnSubmit="Submit" IsProcessing="_isProcessing"></SearchRetailerForm>
+}
+
+
+@code {
+    private bool _isProcessing = false;
+    private bool _showResults = false;
+
+    private SearchRetailerRequest _searchRetailer = new SearchRetailerRequest();
+    private List<ListRetailerDto> _retailers { get; set; } = new List<ListRetailerDto>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        UpdateSearchModelFromQueryParameters();
+        if (!_searchRetailer.IsEmpty())
+        {
+            await GetSearchResults();
+            _showResults = true;
+        }
+
+        _navigationManager.LocationChanged += HandleLocationChanged;
+
+    }
+
+    private void UpdateSearchModelFromQueryParameters()
+    {
+        var uri = _navigationManager.Uri;
+        _navigationManager.TryGetQueryString<string>("CompanyName", out var CompanyName);
+        _navigationManager.TryGetQueryString<string>("City", out var City);
+
+        _searchRetailer.CompanyName = CompanyName;
+        _searchRetailer.City = City;
+    }
+
+    private async Task Submit(SearchRetailerRequest searchRetailer)
+    {
+        _navigationManager.NavigateTo($"/searchretailer/?{searchRetailer.ToUrl()}");
+    }
+
+    private void HandleLocationChanged(object sender, LocationChangedEventArgs args)
+    {
+        UpdateSearchModelFromQueryParameters();
+        if (!_searchRetailer.IsEmpty())
+        {
+            GetSearchResults();
+            _showResults = true;
+        }
+        else
+        {
+            _retailers = new List<ListRetailerDto>();
+            _showResults = false;
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task GetSearchResults()
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _retailers = (await _mediator.Send(_searchRetailer)).Retailers;
+
+        _isProcessing = false;
+        _showResults = true;
+
+        StateHasChanged();
+
+    }
+
+    private void Cancel()
+    {
+        _navigationManager.NavigateTo("/");
+    }
+
+    private void BackToSearch()
+    {
+        _showResults = false;
+        _retailers = new List<ListRetailerDto>();
+        StateHasChanged();
+    }
+
+    public void Dispose() => _navigationManager.LocationChanged -= HandleLocationChanged;
+}

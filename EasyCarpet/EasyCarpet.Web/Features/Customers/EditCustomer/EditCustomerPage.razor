@@ -1,0 +1,77 @@
+﻿@page "/editcustomer/{customerid:guid}"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Customers 
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@inject IDialogService _dialogService
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_isLoading)
+{
+    <MudPaper Elevation="25">
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+        <MudText Color="Color.Info" Typo="Typo.body1"> Loading customer... </MudText>
+    </MudPaper>
+}
+else
+{
+    <CustomerForm Customer="_customer" OnSubmit="Submit" OnCancel="NavigateToList" OnDelete="DeleteAsync"
+                 CommandResponse="_commandResponse" IsProcessing="_isProcessing">
+    </CustomerForm>
+}
+
+@code {
+    private bool _isLoading;
+    private bool _isProcessing = false;
+    private CustomerFormModel _customer = new CustomerFormModel();
+    private CommandResponse _commandResponse;
+
+    [Parameter] public Guid CustomerId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        _isLoading = true;
+        _customer = (await _mediator.Send(new GetCustomerRequest(CustomerId))).Customer;
+        _isLoading = false;
+    }
+
+    private async Task Submit(CustomerFormModel customer)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new EditCustomerRequest(customer));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteAsync(Guid customerId)
+    {
+        if ((await _dialogService.ShowMessageBox("Delete", "Are you sure?", yesText: "Delete", cancelText: "Cancel")).Value)
+        {
+            await _mediator.Send(new DeleteCustomerRequest(_customer.Id));
+            NavigateToList();
+
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo("/listcustomer");
+    }
+}

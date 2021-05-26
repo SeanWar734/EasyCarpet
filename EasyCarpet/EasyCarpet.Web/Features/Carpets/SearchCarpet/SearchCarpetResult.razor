@@ -1,0 +1,40 @@
+﻿@using EasyCarpet.Shared.Features.Carpets
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Carpet</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.ArrowBack" OnClick="BackToSearch" />
+    </div>
+
+    <MudText Class="mb-8">List of Carpet</MudText>
+
+    <MudTable Items="@Carpet" Hover="true" SortLabel="Sort By" Dense="true">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<ListCarpetDto, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<ListCarpetDto, object>(x=>x.Brand)">Brand</MudTableSortLabel></MudTh>
+            <MudTh>Style</MudTh>
+            <MudTh>Width</MudTh>
+            <MudTh>Price per Yard</MudTh>
+            <MudTh>Description</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Last Name">
+                <MudLink Href="@($"/editcarpet/{context.Id}")"> @context.Name</MudLink>
+            </MudTd>
+            <MudTd DataLabel="Brand">@context.Brand</MudTd>
+            <MudTd DataLabel="Style">@context.Style</MudTd>
+            <MudTd DataLabel="Width">@context.Width</MudTd>
+            <MudTd DataLabel="Price per Yard">@context.SquareYardPrice</MudTd>
+            <MudTd DataLabel="Description">@context.Description</MudTd>
+
+        </RowTemplate>
+    </MudTable>
+</MudPaper>
+
+    @code {
+
+        [Parameter] public List<ListCarpetDto> Carpet { get; set; }
+        [Parameter] public Action OnBackToSearch { get; set; }
+        private void BackToSearch() => OnBackToSearch();
+
+    }

@@ -1,0 +1,54 @@
+﻿@page "/listorder"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Orders   
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Orders</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" OnClick="AddContact" />
+    </div>
+
+    <MudText Class="mb-8">List of Orders</MudText>
+
+    @if (_orders == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+    }
+    else
+    {
+        <MudTable Items="@_orders" Hover="true" SortLabel="Sort By" Dense="true">
+            <HeaderContent>
+                <MudTh>Order Total</MudTh>
+                <MudTh>Customer</MudTh>
+                <MudTh>Retailer</MudTh>
+                <MudTh>Installer</MudTh>
+                <MudTh>Carpet</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Total"><MudLink Href="@($"/editorder/{context.Id}")">@context.Total.ToString("C")</MudLink></MudTd>
+                <MudTd DataLabel="Customer">@context.CustomerFirstName @context.CustomerLastName</MudTd>
+                <MudTd DataLabel="Retailer">@context.RetailerName</MudTd>
+                <MudTd DataLabel="Installer">@context.InstallerFirstName @context.InstallerLastName</MudTd>
+                <MudTd DataLabel="Carpet">@context.CarpetName</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudPaper>
+
+@code {
+    private IEnumerable<ListOrderDto> _orders;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _orders = (await _mediator.Send(new ListOrderRequest())).Orders;
+    }
+
+    private void AddContact()
+    {
+        _navigationManager.NavigateTo("/addorder");
+    }
+}

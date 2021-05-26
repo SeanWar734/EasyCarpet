@@ -1,0 +1,89 @@
+﻿@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Customers 
+
+@if (_customer != null)
+{
+    <EditForm Model="@_customer" OnValidSubmit="HandleSubmitAsync">
+        <FluentValidationValidator/>
+        <ServerSideValidator @ref="_serverSideValidator" />
+
+        <MudCard >
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@_transactionMode</MudText>
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField @bind-Value="_customer.FirstName" Label="First Name" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _customer.FirstName)"></MudTextField>
+                <MudTextField @bind-Value="_customer.LastName" Label="Last Name" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _customer.LastName)"></MudTextField>
+                <MudTextField @bind-Value="_customer.Address" Label="Address" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _customer.Address)"></MudTextField>
+                <MudTextField @bind-Value="_customer.City" Label="City" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _customer.City)"></MudTextField>
+                <MudTextField @bind-Value="_customer.State" Label="State" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _customer.State)"></MudTextField>
+                <MudTextField @bind-Value="_customer.PhoneNumber" Label="Phone Number" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _customer.PhoneNumber)"></MudTextField>
+            
+            </MudCardContent>
+            <MudCardActions Class="d-flex justify-end py-2 px-1">
+                @if (_isEditing)
+                {
+                    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Delete">Delete</MudButton>
+                }
+
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel" Class="ml-4" Disabled="IsProcessing">Cancel</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-2" Disabled="IsProcessing">Save</MudButton>
+            </MudCardActions>
+        </MudCard>
+
+    </EditForm>
+}
+
+@code {
+
+    private ServerSideValidator _serverSideValidator;
+    private bool _isEditing = false;
+    private string _transactionMode = "Adding a Customer";
+    private CustomerFormModel _customer = new CustomerFormModel();
+
+    [Parameter] public CustomerFormModel Customer { get; set; }
+    [Parameter] public bool IsProcessing { get; set; } = false;
+    [Parameter] public CommandResponse CommandResponse { get; set; }
+    [Parameter] public Action OnCancel { get; set; }
+    [Parameter] public Func<Guid, Task> OnDelete { get; set; }
+    [Parameter] public Func<CustomerFormModel, Task> OnSubmit { get; set; }
+
+    private async Task HandleSubmitAsync() => await OnSubmit(_customer);
+    private void Cancel() => OnCancel();
+    private void Delete() => OnDelete(_customer.Id);
+
+    protected override void OnParametersSet()
+    {
+        if (Customer != null)
+        {
+            _customer.Id = Customer.Id;
+            _customer.LastName = Customer.LastName;
+            _customer.FirstName = Customer.FirstName;
+            _customer.Address = Customer.Address;
+            _customer.City = Customer.City;
+            _customer.State = Customer.State;
+            _customer.PhoneNumber = Customer.PhoneNumber;
+    
+            _isEditing = true;
+            _transactionMode = "Editing a Customer";
+        }
+
+
+        if (CommandResponse != null && !CommandResponse.IsSuccessful)
+        {
+            _serverSideValidator.DisplayErrors(CommandResponse.Errors);
+        }
+    }
+}

@@ -1,0 +1,45 @@
+﻿@page "/addorder"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Orders  
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+<OrderForm OnSubmit="Submit" OnCancel="NavigateToList" CommandResponse="_commandResponse" IsProcessing="_isProcessing"></OrderForm>
+
+
+@code {
+
+    private bool _isProcessing = false;
+    private CommandResponse _commandResponse;
+
+    private async Task Submit(OrderFormModel order)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new AddOrderRequest(order));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo("/listorder");
+    }
+}

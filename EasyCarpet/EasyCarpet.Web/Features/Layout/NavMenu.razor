@@ -1,0 +1,22 @@
+﻿<MudNavMenu>
+    <MudTreeView T="string" ExpandOnClick="true">
+        <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Outlined.Dashboard">Dashboard</MudNavLink>
+        <MudTreeViewItem T="string" Text="Carpet">
+            <MudNavLink Href="/listcarpet" Icon="@Icons.Material.Outlined.People">List of Carpet</MudNavLink>
+            <MudNavLink Href="/searchcarpet" Icon="@Icons.Material.Outlined.Search">Search Carpet</MudNavLink>
+        </MudTreeViewItem>
+        <MudTreeViewItem T="string" Text="Retailers">
+            <MudNavLink Href="/listretailer" Icon="@Icons.Material.Outlined.Apartment">List of Retailers</MudNavLink>
+            <MudNavLink Href="/searchretailer" Icon="@Icons.Material.Outlined.Search">Search Retailers</MudNavLink>
+        </MudTreeViewItem>
+        <MudTreeViewItem T="string" Text="Installers">
+            <MudNavLink Href="/listinstaller" Icon="@Icons.Material.Outlined.Person">List of Installers</MudNavLink>
+        </MudTreeViewItem>
+        <MudTreeViewItem T="string" Text="Customers">
+            <MudNavLink Href="/listcustomer" Icon="@Icons.Material.Outlined.Person">List of Customers</MudNavLink>
+        </MudTreeViewItem>
+        <MudTreeViewItem T="string" Text="Orders">
+            <MudNavLink Href="/listorder" Icon="@Icons.Material.Outlined.Biotech">List of Orders</MudNavLink>
+        </MudTreeViewItem>
+    </MudTreeView>
+</MudNavMenu>

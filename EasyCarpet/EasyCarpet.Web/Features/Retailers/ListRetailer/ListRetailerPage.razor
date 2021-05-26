@@ -1,0 +1,56 @@
+﻿@page "/listretailer"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared.Features.Retailers
+@using EasyCarpet.Shared
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Retailers</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" OnClick="AddContact" />
+    </div>
+
+    <MudText Class="mb-8">List of Retailers</MudText>
+
+    @if (_retailers == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+    }
+    else
+    {
+        <MudTable Items="@_retailers" Hover="true" SortLabel="Sort By" Dense="true">
+            <HeaderContent>
+                <MudTh>Company Name</MudTh>
+                <MudTh>Address</MudTh>
+                <MudTh>City</MudTh>
+                <MudTh>State</MudTh>
+                <MudTh>Description</MudTh>
+                <MudTh>Phone Number</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Company Name"><MudLink Href="@($"/editretailer/{context.Id}")">@context.CompanyName</MudLink></MudTd>
+                <MudTd DataLabel="Address">@context.Address</MudTd>
+                <MudTd DataLabel="City">@context.City</MudTd>
+                <MudTd DataLabel="State">@context.State</MudTd>
+                <MudTd DataLabel="Description">@context.Description</MudTd>
+                <MudTd DataLabel="Phone Number">@context.PhoneNumber</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudPaper>
+
+@code {
+    private IEnumerable<ListRetailerDto> _retailers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _retailers = (await _mediator.Send(new ListRetailerRequest())).Retailers.Where(x => x.Id != Guid.Empty);
+    }
+
+    private void AddContact()
+    {
+        _navigationManager.NavigateTo("/addretailer");
+    }
+}

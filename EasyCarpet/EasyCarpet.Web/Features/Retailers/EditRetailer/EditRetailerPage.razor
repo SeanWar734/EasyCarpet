@@ -1,0 +1,100 @@
+﻿@page "/editretailer/{retailerid:guid}"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Retailers
+@using EasyCarpet.Shared.Features.Installers
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@inject IDialogService _dialogService
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_isLoading)
+{
+    <MudPaper Elevation="25">
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+        <MudText Color="Color.Info" Typo="Typo.body1"> Loading retailer... </MudText>
+    </MudPaper>
+}
+else
+{
+    <RetailerForm Retailer="_retailer" OnSubmit="Submit" OnCancel="NavigateToList" OnDelete="DeleteAsync"
+                  CommandResponse="_commandResponse" IsProcessing="_isProcessing">
+    </RetailerForm>
+    <br />
+    @foreach (var installer in _installers)
+    {
+        <MudCard>
+            <MudCardContent>
+                <MudText>@installer.FirstName @installer.LastName</MudText>
+                <MudText Typo="Typo.body2">@installer.PhoneNumber</MudText>
+                <MudText Typo="Typo.body2">@installer.SquareYardPrice.ToString("C")</MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" OnClick="(() => NavigateToInstaller(installer.Id))">View Installer</MudButton>
+            </MudCardActions>
+        </MudCard>
+        <br />
+    }
+}
+
+@code {
+    private bool _isLoading;
+    private bool _isProcessing = false;
+    private RetailerFormModel _retailer = new RetailerFormModel();
+    private CommandResponse _commandResponse;
+    private IEnumerable<ListInstallerDto> _installers;
+
+    [Parameter] public Guid RetailerId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        _isLoading = true;
+        _retailer = (await _mediator.Send(new GetRetailerRequest(RetailerId))).Retailer;
+        _installers = (await _mediator.Send(new ListInstallerByRetailerIdRequest(RetailerId))).Installers;
+        _isLoading = false;
+    }
+
+    private async Task Submit(RetailerFormModel retailer)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new EditRetailerRequest(retailer));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteAsync(Guid retailerId)
+    {
+        if ((await _dialogService.ShowMessageBox("Delete", "Are you sure?", yesText: "Delete", cancelText: "Cancel")).Value)
+        {
+            await _mediator.Send(new DeleteRetailerRequest(_retailer.Id));
+            NavigateToList();
+
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo("/listretailer");
+    }
+
+    private void NavigateToInstaller(Guid id)
+    {
+        _navigationManager.NavigateTo($"/editinstaller/{id}");
+    }
+}

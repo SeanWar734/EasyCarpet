@@ -1,0 +1,37 @@
+﻿@using EasyCarpet.Shared.Features.Retailers
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Retailer</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.ArrowBack" OnClick="BackToSearch" />
+    </div>
+
+    <MudText Class="mb-8">List of Retailers</MudText>
+
+    <MudTable Items="@Retailers" Hover="true" SortLabel="Sort By" Dense="true">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<ListRetailerDto, object>(x=>x.CompanyName)">Company Name</MudTableSortLabel></MudTh>
+            <MudTh>Address</MudTh>
+            <MudTh>City</MudTh>
+            <MudTh>State</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>Phone Number</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Company Name"><MudLink Href="@($"/editretailer/{context.Id}")">@context.CompanyName</MudLink></MudTd>
+            <MudTd DataLabel="Address">@context.Address</MudTd>
+            <MudTd DataLabel="City">@context.City</MudTd>
+            <MudTd DataLabel="State">@context.State</MudTd>
+            <MudTd DataLabel="Description">@context.Description</MudTd>
+            <MudTd DataLabel="Phone Number">@context.PhoneNumber</MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudPaper>
+
+    @code {
+
+        [Parameter] public List<ListRetailerDto> Retailers { get; set; }
+        [Parameter] public Action OnBackToSearch { get; set; }
+        private void BackToSearch() => OnBackToSearch();
+
+    }

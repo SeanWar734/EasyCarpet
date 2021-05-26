@@ -1,0 +1,124 @@
+﻿@using EasyCarpet.Shared.Features.Installers
+@using EasyCarpet.Shared.Features.Retailers
+@using EasyCarpet.Shared
+@using EasyCarpet.Web.Helpers
+@inject IMediator _mediator
+@using MediatR
+
+@if (_installer != null)
+{
+    <EditForm Model="@_installer" OnValidSubmit="HandleSubmitAsync">
+        <FluentValidationValidator />
+        <ServerSideValidator @ref="_serverSideValidator" />
+
+        <MudCard>
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6">@_transactionMode</MudText>
+                    <MudText Color="@Color.Error">
+                        <ValidationSummary />
+                    </MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudTextField @bind-Value="_installer.FirstName" Label="First Name" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _installer.FirstName)"></MudTextField>
+                <MudTextField @bind-Value="_installer.LastName" Label="Last Name" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _installer.LastName)"></MudTextField>
+                <MudTextField @bind-Value="_installer.PhoneNumber" Label="Phone Number" Variant="Variant.Text" Margin="Margin.Normal"
+                              For="@(()=> _installer.PhoneNumber)"></MudTextField>
+                <MudNumericField @bind-Value="_installer.Area" Label="Area Installed" Variant="Variant.Text" Margin="Margin.Normal"
+                                 For="@(()=> _installer.Area)"></MudNumericField>
+                <MudNumericField @bind-Value="_installer.SquareYardPrice" Label="Price per Yard" Step=".01m" Variant="Variant.Text" Margin="Margin.Normal"
+                                 For="@(()=> _installer.SquareYardPrice)"></MudNumericField>
+                @if (_retailers != null)
+                {
+                    <MudSelect @bind-Value="_installer.RetailerId" Label="Retailer" Dense="true" Step=".01" Variant="Variant.Text" Margin="Margin.Normal"
+                               For="@(() => _installer.RetailerId)">
+                        @foreach (var retailer in _retailers)
+                                {
+                            <MudSelectItem Value="retailer.Id">@retailer.CompanyName</MudSelectItem>
+                                }
+                    </MudSelect>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="string" Label="Retailer" SearchFunc="@Search1" ResetValueOnEmptyText="true" CoerceText="false"></MudAutocomplete>
+                    </MudItem>
+                }
+            </MudCardContent>
+            <MudCardActions Class="d-flex justify-end py-2 px-1">
+                @if (_isEditing)
+                {
+                    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="Delete">Delete</MudButton>
+                }
+
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Cancel" Class="ml-4" Disabled="IsProcessing">Cancel</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-2" Disabled="IsProcessing">Save</MudButton>
+            </MudCardActions>
+        </MudCard>
+
+    </EditForm>
+}
+
+@code {
+
+    private ServerSideValidator _serverSideValidator;
+    private bool _isEditing = false;
+    private string _transactionMode = "Adding a Installer";
+    private InstallerFormModel _installer = new InstallerFormModel();
+    private IEnumerable<ListRetailerDto> _retailers;
+
+    [Parameter] public InstallerFormModel Installer { get; set; }
+    [Parameter] public bool IsProcessing { get; set; } = false;
+    [Parameter] public CommandResponse CommandResponse { get; set; }
+    [Parameter] public Action OnCancel { get; set; }
+    [Parameter] public Func<Guid, Task> OnDelete { get; set; }
+    [Parameter] public Func<InstallerFormModel, Task> OnSubmit { get; set; }
+
+    private async Task HandleSubmitAsync() => await OnSubmit(_installer);
+    private void Cancel() => OnCancel();
+    private void Delete() => OnDelete(_installer.Id);
+
+    protected override async Task OnInitializedAsync()
+    {
+        _retailers = (await _mediator.Send(new ListRetailerRequest())).Retailers;
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Installer != null)
+        {
+            _installer.Id = Installer.Id;
+            _installer.LastName = Installer.LastName;
+            _installer.FirstName = Installer.FirstName;
+            _installer.Area = Installer.Area;
+            _installer.PhoneNumber = Installer.PhoneNumber;
+            _installer.SquareYardPrice = Installer.SquareYardPrice;
+            _installer.RetailerId = Installer.RetailerId;
+
+            _isEditing = true;
+            _transactionMode = "Editing a Installer";
+        }
+
+
+        if (CommandResponse != null && !CommandResponse.IsSuccessful)
+        {
+            _serverSideValidator.DisplayErrors(CommandResponse.Errors);
+        }
+
+    }
+
+    public async Task<IEnumerable<string>> Search1(string value)
+    {
+        await Task.Delay(5);
+
+        if (string.IsNullOrEmpty(value))
+        {
+            return null;
+        }
+        else
+        {
+            return _retailers.Where(x => x.CompanyName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).Select(x => x.CompanyName);
+        }
+    }
+}

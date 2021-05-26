@@ -1,0 +1,41 @@
+﻿@using EasyCarpet.Shared.Features.Carpets
+
+<EditForm Model="@SearchCarpet" OnValidSubmit="HandleSubmitAsync">
+    <MudCard>
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">Search Carpet</MudText>
+                <MudText Color="@Color.Error">
+                    <ValidationSummary />
+                </MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudTextField @bind-Value="SearchCarpet.Name" Label="Name" Variant="Variant.Text" Margin="Margin.Normal"
+                          For="@(()=> SearchCarpet.Name)"></MudTextField>
+            <MudTextField @bind-Value="SearchCarpet.Brand" Label="Brand" Variant="Variant.Text" Margin="Margin.Normal"
+                          For="@(()=> SearchCarpet.Brand)"></MudTextField>
+        </MudCardContent>
+        <MudCardActions Class="d-flex justify-end py-2 px-1">
+            <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="Cancel" Class="ml-4">Cancel</MudButton>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-2" Disabled="IsProcessing">Search</MudButton>
+        </MudCardActions>
+    </MudCard>
+
+</EditForm>
+
+@code {
+
+
+    [Parameter] public bool IsProcessing { get; set; } = false;
+
+    [Parameter] public SearchCarpetRequest SearchCarpet { get; set; }
+    [Parameter] public Func<SearchCarpetRequest, Task> OnSubmit { get; set; }
+    [Parameter] public Action OnCancel { get; set; }
+
+
+    private async Task HandleSubmitAsync() => await OnSubmit(SearchCarpet);
+
+    private void Cancel() => OnCancel();
+}
+

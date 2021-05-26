@@ -1,0 +1,63 @@
+﻿@page "/viewcarpet/{carpetid:guid}"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Carpets
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@inject IDialogService _dialogService
+
+
+<div class="d-flex justify-space-between align-center pa-2">
+    <MudText Typo="Typo.h6" GutterBottom="true">Carpet</MudText>
+    <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.ArrowBack" OnClick="NavigateBack" />
+</div>
+@if (_carpet == null)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+else
+{
+    <div>
+        <div>
+            
+        </div>
+        <div>
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Class="content">@_carpet.Name</MudText>
+                        <MudText Class="content">Brand: @_carpet.Brand</MudText>
+                        <MudText Class="content">@_carpet.Description</MudText>
+                        <MudText Class="content">Width: @_carpet.Width</MudText>
+                        <MudText Class="content">Price per yard: @_carpet.SquareYardPrice.ToString("C")</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardActions>
+                    <MudButton StartIcon="@Icons.Material.Filled.Edit" OnClick="Edit">Edit</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </div>
+    </div>
+}
+
+@code {
+    private CarpetFormModel _carpet;
+
+    [Parameter] public Guid CarpetId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        _carpet = (await _mediator.Send(new GetCarpetRequest(CarpetId))).Carpet;
+    }
+
+    private void NavigateBack()
+    {
+        _navigationManager.NavigateTo("/listcarpet");
+    }
+
+    private void Edit()
+    {
+        _navigationManager.NavigateTo($"/editcarpet/{CarpetId}");
+    }
+}

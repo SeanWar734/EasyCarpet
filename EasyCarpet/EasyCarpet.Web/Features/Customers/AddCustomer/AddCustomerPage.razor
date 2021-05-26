@@ -1,0 +1,45 @@
+﻿@page "/addcustomer"
+@using MediatR
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared;
+@using EasyCarpet.Shared.Features.Customers 
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+<CustomerForm OnSubmit="Submit" OnCancel="NavigateToList" CommandResponse="_commandResponse" IsProcessing="_isProcessing"></CustomerForm>
+
+
+@code {
+
+    private bool _isProcessing = false;
+    private CommandResponse _commandResponse;
+
+    private async Task Submit(CustomerFormModel customer)
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _commandResponse = await _mediator.Send(new AddCustomerRequest(customer));
+
+        _isProcessing = false;
+
+        if (_commandResponse.IsSuccessful)
+        {
+            NavigateToList();
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private void NavigateToList()
+    {
+        _navigationManager.NavigateTo("/listcustomer");
+    }
+}

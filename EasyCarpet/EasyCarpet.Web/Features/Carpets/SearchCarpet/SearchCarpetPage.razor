@@ -1,0 +1,104 @@
+﻿@page "/searchcarpet"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared.Features.Carpets
+@using EasyCarpet.Shared  
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+@implements IDisposable
+
+@if (_isProcessing)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+
+@if (_showResults)
+{
+    <SearchCarpetResult Carpet="_carpet" OnBackToSearch="BackToSearch"></SearchCarpetResult>
+}
+else
+{
+    <SearchCarpetForm SearchCarpet="_searchCarpet" OnCancel="Cancel" OnSubmit="Submit" IsProcessing="_isProcessing"></SearchCarpetForm>
+}
+
+
+@code {
+    private bool _isProcessing = false;
+    private bool _showResults = false;
+
+    private SearchCarpetRequest _searchCarpet = new SearchCarpetRequest();
+    private List<ListCarpetDto> _carpet { get; set; } = new List<ListCarpetDto>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        UpdateSearchModelFromQueryParameters();
+        if (!_searchCarpet.IsEmpty())
+        {
+            await GetSearchResults();
+            _showResults = true;
+        }
+
+        _navigationManager.LocationChanged += HandleLocationChanged;
+
+    }
+
+    private void UpdateSearchModelFromQueryParameters()
+    {
+        var uri = _navigationManager.Uri;
+        _navigationManager.TryGetQueryString<string>("name", out var name);
+        _navigationManager.TryGetQueryString<string>("brand", out var brand);
+
+        _searchCarpet.Name = name;
+        _searchCarpet.Brand = brand;
+    }
+
+    private async Task Submit(SearchCarpetRequest searchCarpet)
+    {
+        _navigationManager.NavigateTo($"/searchcarpet/?{searchCarpet.ToUrl()}");
+    }
+
+    private void HandleLocationChanged(object sender, LocationChangedEventArgs args)
+    {
+        UpdateSearchModelFromQueryParameters();
+        if (!_searchCarpet.IsEmpty())
+        {
+            GetSearchResults();
+            _showResults = true;
+        }
+        else
+        {
+            _carpet = new List<ListCarpetDto>();
+            _showResults = false;
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task GetSearchResults()
+    {
+        _isProcessing = true;
+        StateHasChanged();
+
+        _carpet = (await _mediator.Send(_searchCarpet)).Carpet;
+
+        _isProcessing = false;
+        _showResults = true;
+
+        StateHasChanged();
+
+    }
+
+    private void Cancel()
+    {
+        _navigationManager.NavigateTo("/");
+    }
+
+    private void BackToSearch()
+    {
+        _showResults = false;
+        _carpet = new List<ListCarpetDto>();
+        StateHasChanged();
+    }
+
+    public void Dispose() => _navigationManager.LocationChanged -= HandleLocationChanged;
+}

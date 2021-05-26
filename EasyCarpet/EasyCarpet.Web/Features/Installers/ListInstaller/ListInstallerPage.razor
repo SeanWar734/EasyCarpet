@@ -1,0 +1,56 @@
+﻿@page "/listinstaller"
+@using MediatR
+@using EasyCarpet.Web.Helpers
+@using EasyCarpet.Shared
+@using EasyCarpet.Shared.Features.Installers
+@inject IMediator _mediator
+@inject NavigationManager _navigationManager
+
+<MudPaper Elevation="10" Class="pa-4">
+    <div class="d-flex justify-space-between">
+        <MudText Typo="Typo.h6" GutterBottom="true">Installers</MudText>
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" OnClick="AddContact" />
+    </div>
+
+    <MudText Class="mb-8">List of Installers</MudText>
+
+    @if (_installers == null)
+    {
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+    }
+    else
+    {
+        <MudTable Items="@_installers" Hover="true" SortLabel="Sort By" Dense="true">
+            <HeaderContent>
+                <MudTh>First Name</MudTh>
+                <MudTh>Last Name</MudTh>
+                <MudTh>Phone Number</MudTh>
+                <MudTh>Price</MudTh>
+                <MudTh>Area</MudTh>
+                <MudTh>Retailer</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="First Name"><MudLink Href="@($"editinstaller/{context.Id}")">@context.FirstName</MudLink></MudTd>
+                <MudTd DataLabel="Last Name">@context.LastName</MudTd>
+                <MudTd DataLabel="Phone Number">@context.PhoneNumber</MudTd>
+                <MudTd DataLabel="Price per Yard">@context.SquareYardPrice.ToString("C")</MudTd>
+                <MudTd DataLabel="Area">@context.Area</MudTd>
+                <MudTd DataLabel="Retailer Name">@context.RetailerName</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudPaper>
+
+@code {
+    private IEnumerable<ListInstallerDto> _installers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _installers = (await _mediator.Send(new ListInstallerRequest())).Installers;
+    }
+
+    private void AddContact()
+    {
+        _navigationManager.NavigateTo("/addinstaller");
+    }
+}
