@@ -19,7 +19,7 @@ namespace EasyCarpet.Api.Features.Carpets
 
             Include(new CarpetValidator());
 
-            RuleFor(x => x).Must(x => NoDuplicateNames(x)).WithMessage("No duplicate names");
+            //RuleFor(x => x).Must(x => NoDuplicateNames(x)).WithMessage("No duplicate names");
         }
 
         public bool NoDuplicateNames(CarpetFormModel carpet)

@@ -37,6 +37,14 @@
                                  For="@(() => _carpet.SquareYardPrice)"></MudNumericField>
 
                 <MudItem>
+                    @if (file != null)
+                    {
+                        <MudAlert>@file.Name</MudAlert>
+                    }
+                    @if (!string.IsNullOrEmpty(ImageDataURL))
+                    {
+                        <MudAlert>@(ImageDataURL)</MudAlert>
+                    }
                     <InputFile id="fileInput" hidden OnChange="UploadFiles" />
                     <div>
                         <MudButton HtmlTag="label"
@@ -146,6 +154,7 @@
             await imageFile.OpenReadStream().ReadAsync(buffer);
             ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
             UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
+            Console.WriteLine("here");
         }
     }
 

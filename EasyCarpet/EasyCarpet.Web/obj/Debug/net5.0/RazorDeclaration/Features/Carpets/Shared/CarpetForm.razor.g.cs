@@ -160,7 +160,7 @@ using System.IO;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 87 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+#line 95 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
        
 
     private ServerSideValidator _serverSideValidator;
@@ -223,6 +223,7 @@ using System.IO;
             await imageFile.OpenReadStream().ReadAsync(buffer);
             ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
             UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
+            Console.WriteLine("here");
         }
     }
 

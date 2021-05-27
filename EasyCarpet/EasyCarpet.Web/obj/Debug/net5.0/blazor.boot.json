@@ -207,13 +207,13 @@
       "System.Private.CoreLib.dll": "sha256-2km83sNUTrumGJYdDzsN8RnJqv00vKWLCCh0UGajTB4=",
       "EasyCarpet.Core.dll": "sha256-o0egPg4ijr6x4WjgZNFfaxBiEeysWCoJ+Wlly3DhHB0=",
       "EasyCarpet.Shared.dll": "sha256-HMGeTnt3coM9L3erb0csNvuoHekukJXETLwPDqDcHQY=",
-      "EasyCarpet.Web.dll": "sha256-5Dz8x10LzQakdn\/8P2Wo6xqS32+JvCxA93CPkA8aWfE="
+      "EasyCarpet.Web.dll": "sha256-AP6pJr7p7IjUDuKzxsxX5yNq3A8nI\/tu41DvjaWj\/ao="
     },
     "lazyAssembly": null,
     "pdb": {
       "EasyCarpet.Shared.pdb": "sha256-koP8sthDnxsf4js3mwhtowWuPaNqCrfX+c4NRF+nsNw=",
       "EasyCarpet.Core.pdb": "sha256-FEmUWsNE1sMIf\/oV1nb7lu18DDNUkdBSOobtB\/I6Q\/E=",
-      "EasyCarpet.Web.pdb": "sha256-NdswRV5g+Tw5tNmt8LR4nY730cPlj0cKCwbwZMkjuSc="
+      "EasyCarpet.Web.pdb": "sha256-wJ6KhedpETZfP0hX85ruYBf1e+qUQX\/UVVADCDLQumo="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-ibxaSjW7s3aLVssChknhzCpgMTHGu4D48Q9OLP3dfe8=",
