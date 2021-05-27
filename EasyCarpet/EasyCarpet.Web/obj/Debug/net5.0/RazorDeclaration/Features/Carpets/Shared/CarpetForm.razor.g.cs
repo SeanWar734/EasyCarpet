@@ -214,6 +214,7 @@ using System.IO;
     private async Task UploadFiles(InputFileChangeEventArgs e)
     {
         file = e.File;
+
         if (file != null)
         {
             var extension = Path.GetExtension(file.Name);
@@ -223,8 +224,9 @@ using System.IO;
             await imageFile.OpenReadStream().ReadAsync(buffer);
             ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
             UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
-            Console.WriteLine("here");
         }
+
+        Console.WriteLine("here");
     }
 
     private void DeleteAsync()

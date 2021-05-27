@@ -192,12 +192,12 @@
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
-              "version": "[5.0.5, )"
+              "version": "[5.0.6, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.5, )"
+              "version": "[5.0.6, )"
             },
             "Microsoft.AspNetCore.WebUtilities": {
               "target": "Package",
@@ -209,7 +209,7 @@
             },
             "MudBlazor": {
               "target": "Package",
-              "version": "[5.0.8, )"
+              "version": "[5.0.10, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

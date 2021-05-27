@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace EasyCarpet.Domain.Models
 {
@@ -18,6 +19,7 @@ namespace EasyCarpet.Domain.Models
         public string Style { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+
 
         public Carpet()
         {

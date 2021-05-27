@@ -446,12 +446,6 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\AKU5fejC.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\j1+lSMdw.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\aNQsgmJ2.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\eqVXnVMU.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\In7VqpP0.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\MwLClKq0.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\PVmEUNAv.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\4teCwurG.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\6WYSla1Q.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\B5nL3Sz8.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\LSmOoyNU.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\WddJKozg.gz
@@ -467,10 +461,7 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\3NNR5jKZ.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\+BFUvPY5.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\wCddkWmc.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\6TDulynp.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\+c7EBL70.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\C6I8izP1.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\4Pn0+NCS.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\SmZFzgVG.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\7qYhtfsW.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\Z6dj342P.gz
@@ -727,3 +718,12 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\AC+NASSK.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\c4V+xgkk.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\oN2XpKEX.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\Zm6t6+nv.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\vbjzI2PK.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\H+NarcI3.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\BTvv93e6.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\e6bGRyWe.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\wnAQUVQB.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\ascWWfod.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\5h1+CpZ6.gz
