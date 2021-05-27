@@ -133,20 +133,27 @@ using MediatR;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\EditCarpet\EditCarpetPage.razor"
-using EasyCarpet.Web.Helpers;
+using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\EditCarpet\EditCarpetPage.razor"
-using EasyCarpet.Shared;
+using EasyCarpet.Web.Helpers;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\EditCarpet\EditCarpetPage.razor"
+using EasyCarpet.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\EditCarpet\EditCarpetPage.razor"
 using EasyCarpet.Shared.Features.Carpets;
 
 #line default
@@ -161,12 +168,14 @@ using EasyCarpet.Shared.Features.Carpets;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 29 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\EditCarpet\EditCarpetPage.razor"
+#line 30 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\EditCarpet\EditCarpetPage.razor"
        
     private bool _isLoading;
     private bool _isProcessing = false;
     private CarpetFormModel _carpet = new CarpetFormModel();
     private CommandResponse _commandResponse;
+
+    public IBrowserFile file { get; set; }
 
     [Parameter] public Guid CarpetId { get; set; }
 

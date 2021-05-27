@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WLGs1Kt/7nA+Kx6XCYc5abSQVNiQ1P/l7NilfB0MrixPd4yCNGDHXyNxpkWA15xmlGjJxq4ngOVf6HXLG5kCpg==",
+  "dgSpecHash": "RQwdZQrWMLOeFsoHq8nIwZvz3ZyN37BMTAXKAmUlekPWKfRvNYdh3NWweSd4WI1zm1DYBVy2PG8ldFhjogGOiA==",
   "success": true,
   "projectFilePath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Web\\EasyCarpet.Web.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,8 @@
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.localization\\5.0.6\\microsoft.extensions.localization.5.0.6.nupkg.sha512",
+    "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\5.0.6\\microsoft.extensions.localization.abstractions.5.0.6.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",

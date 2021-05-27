@@ -153,7 +153,7 @@ using EasyCarpet.Shared.Features.Carpets;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+#line 86 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
        
 
     private ServerSideValidator _serverSideValidator;
@@ -194,6 +194,19 @@ using EasyCarpet.Shared.Features.Carpets;
         if (CommandResponse != null && !CommandResponse.IsSuccessful)
         {
             _serverSideValidator.DisplayErrors(CommandResponse.Errors);
+        }
+    }
+
+    private async Task UploadFiles(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+        if (file != null)
+        {
+            var extension = Path.GetExtension(file.Name);
+            var format = "image/png";
+            var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
+            var buffer = new byte[imageFile.Size];
+            await imageFile.OpenReadStream().ReadAsync(buffer);
         }
     }
 
