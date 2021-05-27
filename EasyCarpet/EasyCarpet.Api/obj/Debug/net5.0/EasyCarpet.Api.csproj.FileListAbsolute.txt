@@ -100,3 +100,5 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Debug\net5.0\ref\EasyCarpet.Api.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Debug\net5.0\EasyCarpet.Api.pdb
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Debug\net5.0\EasyCarpet.Api.genruntimeconfig.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\Microsoft.Extensions.Localization.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\Microsoft.Extensions.Localization.Abstractions.dll

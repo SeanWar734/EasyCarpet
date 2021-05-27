@@ -1,6 +1,5 @@
 ﻿@page "/editcarpet/{carpetid:guid}"
 @using MediatR
-@using System.IO;
 @using EasyCarpet.Web.Helpers
 @using EasyCarpet.Shared;
 @using EasyCarpet.Shared.Features.Carpets
@@ -32,8 +31,6 @@ else
     private bool _isProcessing = false;
     private CarpetFormModel _carpet = new CarpetFormModel();
     private CommandResponse _commandResponse;
-
-    public IBrowserFile file { get; set; }
 
     [Parameter] public Guid CarpetId { get; set; }
 

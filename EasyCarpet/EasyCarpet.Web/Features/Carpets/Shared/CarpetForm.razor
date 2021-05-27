@@ -1,7 +1,8 @@
 ﻿@using EasyCarpet.Web.Helpers;
 @using EasyCarpet.Shared;
 @using EasyCarpet.Shared.Features.Carpets; 
-
+@using System.IO
+ 
 @if (_carpet != null)
 {
     <EditForm Model="@_carpet" OnValidSubmit="HandleSubmitAsync">
@@ -46,13 +47,13 @@
                                    for="fileInput">
                             @localizer["Upload"]
                         </MudButton>
-                        @if (!string.IsNullOrEmpty(AddEditProductModel.ImageDataURL))
+                        @if (!string.IsNullOrEmpty(ImageDataURL))
                         {
                             <MudButton Variant="Variant.Text"
                                        Color="Color.Info"
                                        StartIcon="@Icons.Filled.RemoveRedEye"
                                        Size="Size.Small"
-                                       Link="@(AddEditProductModel.ImageDataURL)" Target="_blank">
+                                       Link="@(ImageDataURL)" Target="_blank">
                                 @localizer["View"]
                             </MudButton>
                             <MudButton Variant="Variant.Text"
@@ -90,12 +91,19 @@
     private string _transactionMode = "Adding a Carpet";
     private CarpetFormModel _carpet = new CarpetFormModel();
 
+    public string ImageDataURL { get; set; }
+    public UploadRequest UploadRequest { get; set; }
+
+    [Inject] private Microsoft.Extensions.Localization.IStringLocalizer<CarpetForm> localizer { get; set; }
+
     [Parameter] public CarpetFormModel Carpet { get; set; }
     [Parameter] public bool IsProcessing { get; set; } = false;
     [Parameter] public CommandResponse CommandResponse { get; set; }
     [Parameter] public Action OnCancel { get; set; }
     [Parameter] public Func<Guid, Task> OnDelete { get; set; }
     [Parameter] public Func<CarpetFormModel, Task> OnSubmit { get; set; }
+
+    public IBrowserFile file { get; set; }
 
     private async Task HandleSubmitAsync() => await OnSubmit(_carpet);
     private void Cancel() => OnCancel();
@@ -136,6 +144,14 @@
             var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
             var buffer = new byte[imageFile.Size];
             await imageFile.OpenReadStream().ReadAsync(buffer);
+            ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+            UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
         }
+    }
+
+    private void DeleteAsync()
+    {
+        ImageDataURL = null;
+        UploadRequest = new UploadRequest();
     }
 }

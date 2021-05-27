@@ -20,6 +20,7 @@ namespace EasyCarpet.Web
             builder.Services.AddMediatR(typeof(Program).Assembly);
             builder.Services.AddScoped<IHttpService, HttpService>();
             builder.Services.AddMudServices();
+            builder.Services.AddLocalization();
 
             await builder.Build().RunAsync();
         }

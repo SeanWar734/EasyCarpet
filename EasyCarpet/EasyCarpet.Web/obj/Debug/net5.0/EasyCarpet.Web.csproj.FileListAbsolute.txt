@@ -721,3 +721,9 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\Razor\Features\Orders\EditOrder\EditOrderPage.razor.g.cs
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\RazorDeclaration\Features\Carpets\ViewCarpet\ViewCarpetPage.razor.g.cs
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\Razor\Features\Carpets\ViewCarpet\ViewCarpetPage.razor.g.cs
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Extensions.Localization.dll.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Extensions.Localization.Abstractions.dll.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Extensions.Localization.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\AC+NASSK.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\c4V+xgkk.gz

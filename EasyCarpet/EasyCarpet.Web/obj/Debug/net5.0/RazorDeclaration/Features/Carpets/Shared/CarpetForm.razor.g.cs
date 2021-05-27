@@ -145,6 +145,13 @@ using EasyCarpet.Shared.Features.Carpets;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
     public partial class CarpetForm : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -153,7 +160,7 @@ using EasyCarpet.Shared.Features.Carpets;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 86 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+#line 87 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
        
 
     private ServerSideValidator _serverSideValidator;
@@ -161,12 +168,19 @@ using EasyCarpet.Shared.Features.Carpets;
     private string _transactionMode = "Adding a Carpet";
     private CarpetFormModel _carpet = new CarpetFormModel();
 
+    public string ImageDataURL { get; set; }
+    public UploadRequest UploadRequest { get; set; }
+
+    [Inject] private Microsoft.Extensions.Localization.IStringLocalizer<CarpetForm> localizer { get; set; }
+
     [Parameter] public CarpetFormModel Carpet { get; set; }
     [Parameter] public bool IsProcessing { get; set; } = false;
     [Parameter] public CommandResponse CommandResponse { get; set; }
     [Parameter] public Action OnCancel { get; set; }
     [Parameter] public Func<Guid, Task> OnDelete { get; set; }
     [Parameter] public Func<CarpetFormModel, Task> OnSubmit { get; set; }
+
+    public IBrowserFile file { get; set; }
 
     private async Task HandleSubmitAsync() => await OnSubmit(_carpet);
     private void Cancel() => OnCancel();
@@ -207,7 +221,15 @@ using EasyCarpet.Shared.Features.Carpets;
             var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
             var buffer = new byte[imageFile.Size];
             await imageFile.OpenReadStream().ReadAsync(buffer);
+            ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+            UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
         }
+    }
+
+    private void DeleteAsync()
+    {
+        ImageDataURL = null;
+        UploadRequest = new UploadRequest();
     }
 
 #line default
