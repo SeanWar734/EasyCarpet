@@ -35,6 +35,7 @@ namespace EasyCarpet.Api
 
             services.AddControllersWithViews();
 
+            services.AddHttpContextAccessor();
 
             services.AddRazorPages()
             .AddFluentValidation(fv =>

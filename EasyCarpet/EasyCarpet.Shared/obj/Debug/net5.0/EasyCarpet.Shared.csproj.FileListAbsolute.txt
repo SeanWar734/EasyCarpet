@@ -13,3 +13,5 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Debu
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Debug\net5.0\EasyCarpet.Shared.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Debug\net5.0\ref\EasyCarpet.Shared.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Debug\net5.0\EasyCarpet.Shared.pdb
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Debug\net5.0\EasyCarpet.Domain.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Debug\net5.0\EasyCarpet.Domain.pdb

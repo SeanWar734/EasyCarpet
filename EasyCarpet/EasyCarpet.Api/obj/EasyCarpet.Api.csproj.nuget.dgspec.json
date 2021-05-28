@@ -60,7 +60,7 @@
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",
-              "version": "[10.1.0, )"
+              "version": "[10.2.0, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.Server": {
               "target": "Package",
@@ -275,6 +275,9 @@
             "projectReferences": {
               "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Core\\EasyCarpet.Core.csproj": {
                 "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Core\\EasyCarpet.Core.csproj"
+              },
+              "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj": {
+                "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj"
               }
             }
           }
@@ -289,13 +292,25 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
-              "version": "[10.1.0, )"
+              "version": "[10.2.0, )"
+            },
+            "LazyCache": {
+              "target": "Package",
+              "version": "[2.1.3, )"
             },
             "MediatR": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             }
           },
           "imports": [
@@ -361,6 +376,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "Blazored.FluentValidation": {
               "target": "Package",
               "version": "[2.0.0, )"

@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj": {
+    "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj",
-        "projectName": "EasyCarpet.Shared",
-        "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj",
+        "projectName": "EasyCarpet.Domain",
+        "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj",
         "packagesPath": "C:\\Users\\swarchuck\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\obj\\",
+        "outputPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -106,13 +106,118 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.AspNetCore.WebUtilities": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.Extensions.Localization": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj",
+        "projectName": "EasyCarpet.Shared",
+        "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj",
+        "packagesPath": "C:\\Users\\swarchuck\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\swarchuck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Core\\EasyCarpet.Core.csproj": {
+                "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Core\\EasyCarpet.Core.csproj"
+              },
+              "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj": {
+                "projectPath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Domain\\EasyCarpet.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
-              "version": "[10.1.0, )"
+              "version": "[10.2.0, )"
+            },
+            "LazyCache": {
+              "target": "Package",
+              "version": "[2.1.3, )"
             },
             "MediatR": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             }
           },
           "imports": [
@@ -178,6 +283,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "Blazored.FluentValidation": {
               "target": "Package",
               "version": "[2.0.0, )"

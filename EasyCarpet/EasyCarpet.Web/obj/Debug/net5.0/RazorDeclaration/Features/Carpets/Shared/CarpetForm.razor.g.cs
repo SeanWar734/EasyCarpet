@@ -147,6 +147,20 @@ using EasyCarpet.Shared.Features.Carpets;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+using EasyCarpet.Shared.Features.Shared.Requests;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+using EasyCarpet.Shared.Features.Shared.Interfaces;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
 using System.IO;
 
 #line default
@@ -160,7 +174,7 @@ using System.IO;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 95 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+#line 97 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
        
 
     private ServerSideValidator _serverSideValidator;
@@ -172,6 +186,7 @@ using System.IO;
     public UploadRequest UploadRequest { get; set; }
 
     [Inject] private Microsoft.Extensions.Localization.IStringLocalizer<CarpetForm> localizer { get; set; }
+    [Inject] private IDocumentManager _documentManager { get; set; }
 
     [Parameter] public CarpetFormModel Carpet { get; set; }
     [Parameter] public bool IsProcessing { get; set; } = false;
@@ -179,12 +194,19 @@ using System.IO;
     [Parameter] public Action OnCancel { get; set; }
     [Parameter] public Func<Guid, Task> OnDelete { get; set; }
     [Parameter] public Func<CarpetFormModel, Task> OnSubmit { get; set; }
+    [Parameter] public AddEditDocumentCommand AddEditDocumentModel { get; set; } = new();
 
     public IBrowserFile file { get; set; }
 
-    private async Task HandleSubmitAsync() => await OnSubmit(_carpet);
     private void Cancel() => OnCancel();
     private void Delete() => OnDelete(_carpet.Id);
+
+    private async Task HandleSubmitAsync()
+    {
+        await _documentManager.SaveAsync(AddEditDocumentModel);
+
+        await OnSubmit(_carpet);
+    }
 
     protected override void OnParametersSet()
     {
@@ -222,8 +244,8 @@ using System.IO;
             var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
             var buffer = new byte[imageFile.Size];
             await imageFile.OpenReadStream().ReadAsync(buffer);
-            ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
-            UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
+            AddEditDocumentModel.URL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+            AddEditDocumentModel.UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
         }
 
         Console.WriteLine("here");

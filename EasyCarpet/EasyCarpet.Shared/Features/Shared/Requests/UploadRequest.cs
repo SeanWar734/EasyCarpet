@@ -1,9 +1,11 @@
-﻿using System;
+﻿using EasyCarpet.Web.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EasyCarpet.Web.Helpers
+namespace EasyCarpet.Shared.Features.Shared.Requests
+
 {
     public class UploadRequest
     {
