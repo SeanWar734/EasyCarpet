@@ -43,8 +43,8 @@ namespace EasyCarpet.Api.Features.Carpets
                     Carpet.Width = request.Carpet.Width;
                     Carpet.Length = request.Carpet.Length;
                     Carpet.SquareYardPrice = request.Carpet.SquareYardPrice;
-                    Carpet.Image = request.Carpet.Image;
                     Carpet.Style = request.Carpet.Style;
+                    Carpet.ImageUrl = request.Carpet.ImageUrl;
                     Carpet.ModifiedDate = DateTime.Now;
 
                     await _context.SaveChangesAsync(cancellationToken);

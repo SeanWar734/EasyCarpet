@@ -780,7 +780,6 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\EasyCarpet.Domain.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Debug\net5.0\wwwroot\_framework\EasyCarpet.Domain.pdb
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\zScKIzv9.gz
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\8PlRedoX.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\ZOpjEAju.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\uuaheUqW.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\GqW2hJy8.gz
@@ -806,3 +805,4 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\gGzCBDH9.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\J3k+0HjI.gz
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\4EEclX1F.gz
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\obj\Debug\net5.0\build-gz\AKU5fejC.gz

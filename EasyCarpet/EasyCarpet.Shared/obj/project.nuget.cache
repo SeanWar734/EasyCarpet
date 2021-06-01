@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/4THMknmOhg9mlr8nzFGpXXBUH5xpciAoakPVnXq6zIwFcDwTp85BjggCpcJGZhrjLWzwLSbvjg5d+g9yQ82aA==",
+  "dgSpecHash": "DWUGKYHG8sM1vm6n10GKU6ex+OuzrD6z7jWgVgQ2xFUremKQ2r100vNuW6n7lhMGvDVvccawOAtam7ZvBNTdxQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Shared\\EasyCarpet.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\swarchuck\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
-    "C:\\Users\\swarchuck\\.nuget\\packages\\fluentvalidation\\10.2.0\\fluentvalidation.10.2.0.nupkg.sha512",
+    "C:\\Users\\swarchuck\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\lazycache\\2.1.3\\lazycache.2.1.3.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.6\\microsoft.aspnetcore.authorization.5.0.6.nupkg.sha512",

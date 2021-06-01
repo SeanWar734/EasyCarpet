@@ -5,11 +5,14 @@ using EasyCarpet.Domain.Interfaces;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IO;
 
 namespace EasyCarpet.Api
 {
@@ -30,6 +33,7 @@ namespace EasyCarpet.Api
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IDateTime, DateTimeService>();
+            services.AddTransient<IUploadService, UploadService>();
 
             RepoDb.SqlServerBootstrap.Initialize();
 
@@ -71,6 +75,11 @@ namespace EasyCarpet.Api
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(ConfigurationPath.Combine(Directory.GetCurrentDirectory(), @"Files")),
+                RequestPath = new PathString("/Files")
+            });
 
             app.UseRouting();
 

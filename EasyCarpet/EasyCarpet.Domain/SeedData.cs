@@ -16,7 +16,6 @@ namespace EasyCarpet.Domain
             Brand = "Traffic Master",
             Description = "Medium Beige / Dark Beige flecks, indoor residential",
             Name = "TrafficMaster: Brown",
-            Image = "TrafficMasterBrown.jpg",
             Style = "Plush",
             CreatedDate = DateTime.Now,
             ModifiedDate = DateTime.Now

@@ -147,20 +147,6 @@ using EasyCarpet.Shared.Features.Carpets;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
-using EasyCarpet.Shared.Features.Shared.Requests;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
-using EasyCarpet.Shared.Features.Shared.Interfaces;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
 using System.IO;
 
 #line default
@@ -174,7 +160,7 @@ using System.IO;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 97 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
+#line 88 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\Shared\CarpetForm.razor"
        
 
     private ServerSideValidator _serverSideValidator;
@@ -182,11 +168,7 @@ using System.IO;
     private string _transactionMode = "Adding a Carpet";
     private CarpetFormModel _carpet = new CarpetFormModel();
 
-    public string ImageDataURL { get; set; }
-    public UploadRequest UploadRequest { get; set; }
-
     [Inject] private Microsoft.Extensions.Localization.IStringLocalizer<CarpetForm> localizer { get; set; }
-    [Inject] private IDocumentManager _documentManager { get; set; }
 
     [Parameter] public CarpetFormModel Carpet { get; set; }
     [Parameter] public bool IsProcessing { get; set; } = false;
@@ -194,7 +176,6 @@ using System.IO;
     [Parameter] public Action OnCancel { get; set; }
     [Parameter] public Func<Guid, Task> OnDelete { get; set; }
     [Parameter] public Func<CarpetFormModel, Task> OnSubmit { get; set; }
-    [Parameter] public AddEditDocumentCommand AddEditDocumentModel { get; set; } = new();
 
     public IBrowserFile file { get; set; }
 
@@ -203,8 +184,6 @@ using System.IO;
 
     private async Task HandleSubmitAsync()
     {
-        await _documentManager.SaveAsync(AddEditDocumentModel);
-
         await OnSubmit(_carpet);
     }
 
@@ -215,7 +194,6 @@ using System.IO;
             _carpet.Id = Carpet.Id;
             _carpet.Brand = Carpet.Brand;
             _carpet.Description = Carpet.Description;
-            _carpet.Image = Carpet.Image;
             _carpet.Length = Carpet.Length;
             _carpet.Name = Carpet.Name;
             _carpet.SquareYardPrice = Carpet.SquareYardPrice;
@@ -236,25 +214,13 @@ using System.IO;
     private async Task UploadFiles(InputFileChangeEventArgs e)
     {
         file = e.File;
-
         if (file != null)
         {
+            var buffer = new byte[file.Size];
             var extension = Path.GetExtension(file.Name);
-            var format = "image/png";
-            var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
-            var buffer = new byte[imageFile.Size];
-            await imageFile.OpenReadStream().ReadAsync(buffer);
-            AddEditDocumentModel.URL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
-            AddEditDocumentModel.UploadRequest = new UploadRequest { Data = buffer, UploadType = UploadType.Product, Extension = extension };
+            var Document = await file.OpenReadStream(file.Size).ReadAsync(buffer);
+            _carpet.UploadRequest = new UploadRequest { Data = buffer, Extension = extension };
         }
-
-        Console.WriteLine("here");
-    }
-
-    private void DeleteAsync()
-    {
-        ImageDataURL = null;
-        UploadRequest = new UploadRequest();
     }
 
 #line default

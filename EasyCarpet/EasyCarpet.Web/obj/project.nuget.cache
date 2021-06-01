@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rllfRIvdFnSNVf5OQLi2vn+SPEAX/wiwg74Sofq2BkyMSTI3/IDTGySCkmloWzjQ3Unnr83eJHzxpesAHy+u7w==",
+  "dgSpecHash": "60Y9NQSJTlve95TEMRSQ9jxoaIWa7Vlq9pTnNGKj/KZNVeqfD4tPxxO2cw/TuLtqM7LDZJceZUMzJQvHAJRWpw==",
   "success": true,
   "projectFilePath": "C:\\Users\\swarchuck\\source\\repos\\EasyCarpet\\EasyCarpet\\EasyCarpet.Web\\EasyCarpet.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\swarchuck\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\blazored.fluentvalidation\\2.0.0\\blazored.fluentvalidation.2.0.0.nupkg.sha512",
-    "C:\\Users\\swarchuck\\.nuget\\packages\\fluentvalidation\\10.2.0\\fluentvalidation.10.2.0.nupkg.sha512",
+    "C:\\Users\\swarchuck\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\lazycache\\2.1.3\\lazycache.2.1.3.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\swarchuck\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",

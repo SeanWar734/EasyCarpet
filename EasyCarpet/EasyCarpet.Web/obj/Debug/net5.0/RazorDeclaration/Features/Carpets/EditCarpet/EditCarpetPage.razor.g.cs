@@ -208,7 +208,7 @@ using EasyCarpet.Shared.Features.Carpets;
 
     private void NavigateToList()
     {
-        _navigationManager.NavigateTo($"/viewcarpet/{CarpetId}");
+        _navigationManager.NavigateTo($"/listcarpet");
     }
 
 #line default

@@ -161,7 +161,7 @@ using EasyCarpet.Shared.Features.Carpets;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\ViewCarpet\ViewCarpetPage.razor"
+#line 45 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\ViewCarpet\ViewCarpetPage.razor"
        
     private CarpetFormModel _carpet;
 
@@ -170,6 +170,7 @@ using EasyCarpet.Shared.Features.Carpets;
     protected async override Task OnInitializedAsync()
     {
         _carpet = (await _mediator.Send(new GetCarpetRequest(CarpetId))).Carpet;
+        Console.WriteLine();
     }
 
     private void NavigateBack()

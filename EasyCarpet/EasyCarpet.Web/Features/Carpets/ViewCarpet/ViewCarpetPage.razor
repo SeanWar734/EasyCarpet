@@ -20,12 +20,13 @@ else
 {
     <div>
         <div>
-            
+
         </div>
         <div>
             <MudCard>
                 <MudCardHeader>
                     <CardHeaderContent>
+                        <MudAvatar Image="@(_carpet.ImageUrl ?? "/Files/Images/No_Image_Available.jpg")" Style="width:54px; height:54px"/>
                         <MudText Class="content">@_carpet.Name</MudText>
                         <MudText Class="content">Brand: @_carpet.Brand</MudText>
                         <MudText Class="content">@_carpet.Description</MudText>
@@ -49,6 +50,7 @@ else
     protected async override Task OnInitializedAsync()
     {
         _carpet = (await _mediator.Send(new GetCarpetRequest(CarpetId))).Carpet;
+        Console.WriteLine();
     }
 
     private void NavigateBack()

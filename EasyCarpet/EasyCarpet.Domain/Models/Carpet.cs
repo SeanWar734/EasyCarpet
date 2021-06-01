@@ -18,7 +18,7 @@ namespace EasyCarpet.Domain.Models
         public string Brand { get; set; }
         public string Style { get; set; }
         public string Description { get; set; }
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
 
 
         public Carpet()

@@ -17,19 +17,20 @@ namespace EasyCarpet.Shared.Features.Carpets
         public string Brand { get; set; }
         public string Style { get; set; }
         public string Description { get; set; }
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
+        public UploadRequest UploadRequest { get; set; }
 
         public class CarpetValidator : AbstractValidator<CarpetFormModel>
         {
             public CarpetValidator()
             {
-                RuleFor(x => x.Width)
-                    .LessThan(16.0m).WithMessage("Carpet is less than 16 feet wide")
-                    .GreaterThan(9.0m).WithMessage("Carpet is more than 9 feet wide");
+                //RuleFor(x => x.Width)
+                //    .LessThan(16.0m).WithMessage("Carpet is less than 16 feet wide")
+                //    .GreaterThan(9.0m).WithMessage("Carpet is more than 9 feet wide");
 
-                RuleFor(x => x.SquareYardPrice)
-                    .GreaterThan(1.0m).WithMessage("Carpet must be more than $1 per yard")
-                    .LessThan(100.0m).WithMessage("Carpet cannot excede $100 per yard");
+                //RuleFor(x => x.SquareYardPrice)
+                //    .GreaterThan(1.0m).WithMessage("Carpet must be more than $1 per yard")
+                //    .LessThan(100.0m).WithMessage("Carpet cannot excede $100 per yard");
             }
         }
     }
