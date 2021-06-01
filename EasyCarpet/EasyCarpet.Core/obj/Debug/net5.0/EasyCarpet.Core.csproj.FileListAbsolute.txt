@@ -9,4 +9,3 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Debug\
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Debug\net5.0\EasyCarpet.Core.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Debug\net5.0\ref\EasyCarpet.Core.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Debug\net5.0\EasyCarpet.Core.pdb
-C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Debug\net5.0\EasyCarpet.Core.csprojAssemblyReference.cache

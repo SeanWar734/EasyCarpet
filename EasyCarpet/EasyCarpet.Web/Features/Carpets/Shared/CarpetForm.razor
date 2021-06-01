@@ -45,8 +45,7 @@
                     }
                     <InputFile id="fileInput" hidden OnChange="UploadFiles" />
                     <div>
-                        @if (_carpet.Id == Guid.Empty)
-                        {
+
                             <MudButton HtmlTag="label"
                                        Variant="Variant.Text"
                                        Color="Color.Primary"
@@ -55,8 +54,8 @@
                                        for="fileInput">
                                 upload
                             </MudButton>
-                        }
-                        else if (!string.IsNullOrEmpty(_carpet.ImageUrl))
+                        
+                        @if (!string.IsNullOrEmpty(_carpet.ImageUrl))
                         {
                             <MudButton Variant="Variant.Text"
                                        Color="Color.Secondary"
@@ -123,6 +122,7 @@
             _carpet.SquareYardPrice = Carpet.SquareYardPrice;
             _carpet.Style = Carpet.Style;
             _carpet.Width = Carpet.Width;
+            _carpet.ImageUrl = Carpet.ImageUrl;
 
             _isEditing = true;
             _transactionMode = "Editing a Carpet";

@@ -64,10 +64,10 @@ namespace EasyCarpet.Domain.Migrations
                         {
                             Id = new Guid("9cf37a50-a08f-4ed6-9505-2cb18af43605"),
                             Brand = "Traffic Master",
-                            CreatedDate = new DateTime(2021, 5, 28, 16, 0, 54, 445, DateTimeKind.Local).AddTicks(1957),
+                            CreatedDate = new DateTime(2021, 6, 1, 13, 0, 24, 529, DateTimeKind.Local).AddTicks(7410),
                             Description = "Medium Beige / Dark Beige flecks, indoor residential",
                             Length = 200m,
-                            ModifiedDate = new DateTime(2021, 5, 28, 16, 0, 54, 447, DateTimeKind.Local).AddTicks(9083),
+                            ModifiedDate = new DateTime(2021, 6, 1, 13, 0, 24, 533, DateTimeKind.Local).AddTicks(2349),
                             Name = "TrafficMaster: Brown",
                             SquareYardPrice = 5.89m,
                             Style = "Plush",
@@ -115,10 +115,10 @@ namespace EasyCarpet.Domain.Migrations
                             Id = new Guid("14999486-bc73-4651-be18-fa308608831d"),
                             Address = "123 Grennada St",
                             City = "Livonia",
-                            CreatedDate = new DateTime(2021, 5, 28, 16, 0, 54, 450, DateTimeKind.Local).AddTicks(3757),
+                            CreatedDate = new DateTime(2021, 6, 1, 13, 0, 24, 536, DateTimeKind.Local).AddTicks(8100),
                             FirstName = "Kyle",
                             LastName = "Warchuck",
-                            ModifiedDate = new DateTime(2021, 5, 28, 16, 0, 54, 450, DateTimeKind.Local).AddTicks(3771),
+                            ModifiedDate = new DateTime(2021, 6, 1, 13, 0, 24, 536, DateTimeKind.Local).AddTicks(8113),
                             PhoneNumber = "734-111-6548",
                             State = "Michigan"
                         });
@@ -163,10 +163,10 @@ namespace EasyCarpet.Domain.Migrations
                         {
                             Id = new Guid("ebb89a92-dd6a-43ef-9301-3a58c479120a"),
                             Area = 0m,
-                            CreatedDate = new DateTime(2021, 5, 28, 16, 0, 54, 450, DateTimeKind.Local).AddTicks(162),
+                            CreatedDate = new DateTime(2021, 6, 1, 13, 0, 24, 536, DateTimeKind.Local).AddTicks(4799),
                             FirstName = "Sean",
                             LastName = "Warchuck",
-                            ModifiedDate = new DateTime(2021, 5, 28, 16, 0, 54, 450, DateTimeKind.Local).AddTicks(179),
+                            ModifiedDate = new DateTime(2021, 6, 1, 13, 0, 24, 536, DateTimeKind.Local).AddTicks(4817),
                             PhoneNumber = "734-788-6458",
                             RetailerId = new Guid("943ba50f-41c5-4881-9a97-7e4de399836d"),
                             SquareYardPrice = 4.99m
@@ -209,10 +209,10 @@ namespace EasyCarpet.Domain.Migrations
                         {
                             Id = new Guid("6ea4eafb-0b96-40e3-ab04-da5db6195a17"),
                             CarpetId = new Guid("9cf37a50-a08f-4ed6-9505-2cb18af43605"),
-                            CreatedDate = new DateTime(2021, 5, 28, 16, 0, 54, 450, DateTimeKind.Local).AddTicks(7354),
+                            CreatedDate = new DateTime(2021, 6, 1, 13, 0, 24, 537, DateTimeKind.Local).AddTicks(1391),
                             CustomerId = new Guid("14999486-bc73-4651-be18-fa308608831d"),
                             InstallerId = new Guid("ebb89a92-dd6a-43ef-9301-3a58c479120a"),
-                            ModifiedDate = new DateTime(2021, 5, 28, 16, 0, 54, 450, DateTimeKind.Local).AddTicks(7368),
+                            ModifiedDate = new DateTime(2021, 6, 1, 13, 0, 24, 537, DateTimeKind.Local).AddTicks(1404),
                             RetailerId = new Guid("943ba50f-41c5-4881-9a97-7e4de399836d"),
                             Total = 100m
                         });
@@ -259,9 +259,9 @@ namespace EasyCarpet.Domain.Migrations
                             Address = "321 Schoolcraft Rd",
                             City = "Livonia",
                             CompanyName = "Home Depot",
-                            CreatedDate = new DateTime(2021, 5, 28, 16, 0, 54, 449, DateTimeKind.Local).AddTicks(5710),
+                            CreatedDate = new DateTime(2021, 6, 1, 13, 0, 24, 535, DateTimeKind.Local).AddTicks(8598),
                             Description = "A large box chain retailer with good prices",
-                            ModifiedDate = new DateTime(2021, 5, 28, 16, 0, 54, 449, DateTimeKind.Local).AddTicks(5732),
+                            ModifiedDate = new DateTime(2021, 6, 1, 13, 0, 24, 535, DateTimeKind.Local).AddTicks(8658),
                             PhoneNumber = "734-111-2222",
                             State = "Michigan"
                         });

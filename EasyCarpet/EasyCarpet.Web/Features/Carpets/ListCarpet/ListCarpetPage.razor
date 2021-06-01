@@ -20,6 +20,7 @@
     {
         <MudTable Items="@_carpet" Hover="true" SortLabel="Sort By" Dense="true">
             <HeaderContent>
+                <MudTh />
                 <MudTh>Name</MudTh>
                 <MudTh>Brand</MudTh>
                 <MudTh>Style</MudTh>
@@ -28,6 +29,9 @@
                 <MudTh>Description</MudTh>
             </HeaderContent>
             <RowTemplate>
+                <MudTd>
+                    <MudAvatar Image="@(context.ImageUrl ?? "/Files/Images/No_Image_Available.jpg")" Style="width:30px; height:30px" />
+                </MudTd>
                 <MudTd DataLabel="Name"><MudLink Href="@($"/viewcarpet/{context.Id}")">@context.Name</MudLink></MudTd>
                 <MudTd DataLabel="Brand">@context.Brand</MudTd>
                 <MudTd DataLabel="Style">@context.Style</MudTd>

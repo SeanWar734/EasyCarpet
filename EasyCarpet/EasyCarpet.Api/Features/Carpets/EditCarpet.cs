@@ -1,5 +1,6 @@
 ﻿using Ardalis.ApiEndpoints;
 using EasyCarpet.Api.Extensions;
+using EasyCarpet.Api.Services;
 using EasyCarpet.Domain;
 using EasyCarpet.Shared;
 using EasyCarpet.Shared.Features.Carpets;
@@ -16,10 +17,12 @@ namespace EasyCarpet.Api.Features.Carpets
         .WithResponse<CommandResponse>
     {
         private readonly AppDbContext _context;
+        private readonly IUploadService _uploadService;
 
-        public EditCarpet(AppDbContext context)
+        public EditCarpet(AppDbContext context, IUploadService uploadService)
         {
             _context = context;
+            _uploadService = uploadService;
         }
 
         [HttpPut("api/carpet")]
@@ -46,6 +49,13 @@ namespace EasyCarpet.Api.Features.Carpets
                     Carpet.Style = request.Carpet.Style;
                     Carpet.ImageUrl = request.Carpet.ImageUrl;
                     Carpet.ModifiedDate = DateTime.Now;
+
+                    var uploadRequest = request.Carpet.UploadRequest;
+                    if (uploadRequest != null)
+                    {
+                        uploadRequest.FileName = $"{Carpet.Id}{uploadRequest.Extension}";
+                        Carpet.ImageUrl = await _uploadService.UploadAsync(uploadRequest);
+                    }
 
                     await _context.SaveChangesAsync(cancellationToken);
                 }

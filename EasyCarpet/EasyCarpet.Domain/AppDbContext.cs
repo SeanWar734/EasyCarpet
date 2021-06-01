@@ -36,7 +36,8 @@ namespace EasyCarpet.Domain
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\;Integrated Security=True;Database=EasyCarpetDb");
+            //optionsBuilder.UseSqlServer(@"Server=.\;Integrated Security=True;Database=EasyCarpetDb");
+            optionsBuilder.UseSqlServer(@"Server=tcp:easycarpetapidbserver.database.windows.net,1433;Initial Catalog=EasyCarpet.Api_db;User Id=swarchuck@easycarpetapidbserver;Password=123Carpet!");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

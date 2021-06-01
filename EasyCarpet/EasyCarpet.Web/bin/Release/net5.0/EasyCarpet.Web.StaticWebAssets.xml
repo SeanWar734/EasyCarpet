@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\bin\Release\net5.0\wwwroot\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\swarchuck\.nuget\packages\mudblazor\5.0.10\build\..\staticwebassets\" />
+</StaticWebAssets>

@@ -1,0 +1,12 @@
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\bin\Release\net5.0\EasyCarpet.Core.deps.json
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\bin\Release\net5.0\EasyCarpet.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\bin\Release\net5.0\ref\EasyCarpet.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\bin\Release\net5.0\EasyCarpet.Core.pdb
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.csprojAssemblyReference.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.AssemblyInfoInputs.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.AssemblyInfo.cs
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.csproj.CoreCompileInputs.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\ref\EasyCarpet.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Core\obj\Release\net5.0\EasyCarpet.Core.pdb

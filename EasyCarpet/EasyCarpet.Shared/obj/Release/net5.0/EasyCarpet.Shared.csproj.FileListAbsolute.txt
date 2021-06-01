@@ -1,0 +1,17 @@
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Shared.deps.json
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Shared.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\ref\EasyCarpet.Shared.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Shared.pdb
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Domain.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Core.pdb
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\bin\Release\net5.0\EasyCarpet.Domain.pdb
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.csprojAssemblyReference.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.AssemblyInfoInputs.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.AssemblyInfo.cs
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.csproj.CoreCompileInputs.cache
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.csproj.CopyComplete
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\ref\EasyCarpet.Shared.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Shared\obj\Release\net5.0\EasyCarpet.Shared.pdb
