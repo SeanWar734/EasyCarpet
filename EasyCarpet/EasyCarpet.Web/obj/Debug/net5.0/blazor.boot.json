@@ -237,6 +237,9 @@
     },
     "lazyAssembly": null,
     "pdb": {
+      "EasyCarpet.Shared.pdb": "sha256-RLBBNarX3bePxEJDbE9Tli3Yn+a35i4P1DznlZ1A+sM=",
+      "EasyCarpet.Core.pdb": "sha256-FEmUWsNE1sMIf\/oV1nb7lu18DDNUkdBSOobtB\/I6Q\/E=",
+      "EasyCarpet.Domain.pdb": "sha256-XMmSLjxwpXTt3rd5nXpjcDlHJ5d\/Cgq07\/CcBkoHdsk=",
       "EasyCarpet.Web.pdb": "sha256-6d84NJRvmnPFsJx+owmSAKdfSX\/85ETtgNnBgqiTiW0="
     },
     "runtime": {
