@@ -39,29 +39,29 @@
                     {
                         <MudAlert>@file.Name</MudAlert>
                     }
-                    @if (!string.IsNullOrEmpty(_carpet.ImageUrl))
+                    @if (!string.IsNullOrEmpty(_carpet.ImageFileName))
                     {
-                        <MudAlert>@(_carpet.ImageUrl)</MudAlert>
+                        <MudAlert>@(_carpet.ImageFileName)</MudAlert>
                     }
                     <InputFile id="fileInput" hidden OnChange="UploadFiles" />
                     <div>
 
-                            <MudButton HtmlTag="label"
-                                       Variant="Variant.Text"
-                                       Color="Color.Primary"
-                                       Size="Size.Small"
-                                       StartIcon="@Icons.Filled.CloudUpload"
-                                       for="fileInput">
-                                upload
-                            </MudButton>
-                        
-                        @if (!string.IsNullOrEmpty(_carpet.ImageUrl))
+                        <MudButton HtmlTag="label"
+                                   Variant="Variant.Text"
+                                   Color="Color.Primary"
+                                   Size="Size.Small"
+                                   StartIcon="@Icons.Filled.CloudUpload"
+                                   for="fileInput">
+                            upload
+                        </MudButton>
+
+                        @if (!string.IsNullOrEmpty(_carpet.ImageFileName))
                         {
                             <MudButton Variant="Variant.Text"
                                        Color="Color.Secondary"
                                        StartIcon="@Icons.Filled.CloudDownload"
                                        Size="Size.Small"
-                                       Link="@(_carpet.ImageUrl)" Target="_blank">
+                                       Link="@($"https://easycarpetstorageaccount.blob.core.windows.net/easycarpetblobcontainer/{_carpet.ImageFileName}")" Target="_blank">
                                 download
                             </MudButton>
                         }
@@ -122,7 +122,7 @@
             _carpet.SquareYardPrice = Carpet.SquareYardPrice;
             _carpet.Style = Carpet.Style;
             _carpet.Width = Carpet.Width;
-            _carpet.ImageUrl = Carpet.ImageUrl;
+            _carpet.ImageFileName = Carpet.ImageFileName;
 
             _isEditing = true;
             _transactionMode = "Editing a Carpet";

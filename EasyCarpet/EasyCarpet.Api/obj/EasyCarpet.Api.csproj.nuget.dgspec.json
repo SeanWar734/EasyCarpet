@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.8.4, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[10.1.0, )"

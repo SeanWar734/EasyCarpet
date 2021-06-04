@@ -47,7 +47,7 @@ namespace EasyCarpet.Api.Features.Carpets
                                 ,c.[Name]
                                 ,c.[Brand]
                                 ,c.[Style]
-                                ,c.[ImageUrl]
+                                ,c.[ImageFileName]
                           FROM [dbo].[Carpet] c
                           WHERE c.[Id] = @Id";
             }

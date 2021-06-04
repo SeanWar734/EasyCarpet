@@ -8,6 +8,6 @@ namespace EasyCarpet.Api.Services
 {
     public interface IUploadService
     {
-        Task<string> UploadAsync(UploadRequest request);
+        Task UploadAsync(UploadRequest request);
     }
 }

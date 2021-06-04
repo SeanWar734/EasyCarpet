@@ -408,6 +408,9 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\EasyCarpet.Api.pdb
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Ardalis.ApiEndpoints.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\AutoMapper.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Azure.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Azure.Storage.Blobs.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Azure.Storage.Common.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Blazored.FluentValidation.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\FluentValidation.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\FluentValidation.AspNetCore.dll
@@ -422,6 +425,7 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Components.WebAssembly.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Components.WebAssembly.Server.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Metadata.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
@@ -454,6 +458,7 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\System.IO.Pipelines.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\System.Memory.Data.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\System.Runtime.Caching.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\obj\Release\net5.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll

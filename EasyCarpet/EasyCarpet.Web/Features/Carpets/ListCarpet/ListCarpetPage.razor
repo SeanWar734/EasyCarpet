@@ -30,7 +30,14 @@
             </HeaderContent>
             <RowTemplate>
                 <MudTd>
-                    <MudAvatar Image="@(context.ImageUrl ?? "/Files/Images/No_Image_Available.jpg")" Style="width:30px; height:30px" />
+                    @if (context.ImageFileName != null)
+                        {
+                        <MudAvatar Image="@($"https://easycarpetstorageaccount.blob.core.windows.net/easycarpetblobcontainer/{context.ImageFileName}")" Style="width:30px; height:30px" />
+                        }
+                        else
+                        {
+                        <MudAvatar Image="@("https://easycarpetstorageaccount.blob.core.windows.net/easycarpetblobcontainer/No_Image_Available.jpg")" Style="width:30px; height:30px" />
+                        }
                 </MudTd>
                 <MudTd DataLabel="Name"><MudLink Href="@($"/viewcarpet/{context.Id}")">@context.Name</MudLink></MudTd>
                 <MudTd DataLabel="Brand">@context.Brand</MudTd>

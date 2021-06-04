@@ -105,3 +105,8 @@ C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\n
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\LazyCache.dll
 C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\SixLabors.ImageSharp.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\Azure.Core.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\Azure.Storage.Blobs.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\Azure.Storage.Common.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Api\bin\Debug\net5.0\System.Memory.Data.dll

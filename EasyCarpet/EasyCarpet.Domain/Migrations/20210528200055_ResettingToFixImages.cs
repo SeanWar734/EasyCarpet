@@ -10,13 +10,13 @@ namespace EasyCarpet.Domain.Migrations
             migrationBuilder.RenameColumn(
                 name: "Image",
                 table: "Carpet",
-                newName: "ImageUrl");
+                newName: "ImageFileName");
 
             migrationBuilder.UpdateData(
                 table: "Carpet",
                 keyColumn: "Id",
                 keyValue: new Guid("9cf37a50-a08f-4ed6-9505-2cb18af43605"),
-                columns: new[] { "CreatedDate", "ImageUrl", "ModifiedDate" },
+                columns: new[] { "CreatedDate", "ImageFileName", "ModifiedDate" },
                 values: new object[] { new DateTime(2021, 5, 28, 16, 0, 54, 445, DateTimeKind.Local).AddTicks(1957), null, new DateTime(2021, 5, 28, 16, 0, 54, 447, DateTimeKind.Local).AddTicks(9083) });
 
             migrationBuilder.UpdateData(
@@ -51,7 +51,7 @@ namespace EasyCarpet.Domain.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "ImageUrl",
+                name: "ImageFileName",
                 table: "Carpet",
                 newName: "Image");
 

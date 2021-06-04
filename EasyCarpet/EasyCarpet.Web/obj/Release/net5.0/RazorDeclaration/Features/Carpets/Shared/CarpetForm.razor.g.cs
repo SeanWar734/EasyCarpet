@@ -199,7 +199,7 @@ using System.IO;
             _carpet.SquareYardPrice = Carpet.SquareYardPrice;
             _carpet.Style = Carpet.Style;
             _carpet.Width = Carpet.Width;
-            _carpet.ImageUrl = Carpet.ImageUrl;
+            _carpet.ImageFileName = Carpet.ImageFileName;
 
             _isEditing = true;
             _transactionMode = "Editing a Carpet";

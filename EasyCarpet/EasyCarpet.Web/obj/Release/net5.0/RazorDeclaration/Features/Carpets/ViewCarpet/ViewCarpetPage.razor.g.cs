@@ -161,7 +161,7 @@ using EasyCarpet.Shared.Features.Carpets;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\ViewCarpet\ViewCarpetPage.razor"
+#line 51 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\ViewCarpet\ViewCarpetPage.razor"
        
     private CarpetFormModel _carpet;
 

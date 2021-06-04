@@ -33,7 +33,8 @@ namespace EasyCarpet.Api
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IDateTime, DateTimeService>();
-            services.AddTransient<IUploadService, UploadService>();
+            //services.AddTransient<IUploadService, UploadServiceFileStorage>();
+            services.AddTransient<IUploadService, UploadServiceBlobStorage>();
 
             RepoDb.SqlServerBootstrap.Initialize();
 

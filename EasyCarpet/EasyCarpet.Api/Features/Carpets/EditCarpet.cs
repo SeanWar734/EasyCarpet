@@ -47,14 +47,15 @@ namespace EasyCarpet.Api.Features.Carpets
                     Carpet.Length = request.Carpet.Length;
                     Carpet.SquareYardPrice = request.Carpet.SquareYardPrice;
                     Carpet.Style = request.Carpet.Style;
-                    Carpet.ImageUrl = request.Carpet.ImageUrl;
+                    Carpet.ImageFileName = request.Carpet.ImageFileName;
                     Carpet.ModifiedDate = DateTime.Now;
 
                     var uploadRequest = request.Carpet.UploadRequest;
                     if (uploadRequest != null)
                     {
-                        uploadRequest.FileName = $"{Carpet.Id}{uploadRequest.Extension}";
-                        Carpet.ImageUrl = await _uploadService.UploadAsync(uploadRequest);
+                        uploadRequest.FileName = $"{Guid.NewGuid()}{uploadRequest.Extension}";
+                        Carpet.ImageFileName = uploadRequest.FileName;
+                        await _uploadService.UploadAsync(uploadRequest);
                     }
 
                     await _context.SaveChangesAsync(cancellationToken);

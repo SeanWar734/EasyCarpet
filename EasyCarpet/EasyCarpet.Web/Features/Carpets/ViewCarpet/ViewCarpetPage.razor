@@ -26,8 +26,14 @@ else
             <MudCard>
                 <MudCardHeader>
                     <CardHeaderContent>
-                        <MudAvatar Image="@(_carpet.ImageUrl ?? "/Files/Images/No_Image_Available.jpg")" Style="width:54px; height:54px"/>
-                        <MudText Class="content">@_carpet.Name</MudText>
+                        @if (_carpet.ImageFileName != null)
+                        {
+                            <MudAvatar Image="@($"https://easycarpetstorageaccount.blob.core.windows.net/easycarpetblobcontainer/{_carpet.ImageFileName}")" Style="width:30px; height:30px" />
+                        }
+                        else
+                        {
+                            <MudAvatar Image="@("https://easycarpetstorageaccount.blob.core.windows.net/easycarpetblobcontainer/No_Image_Available.jpg")" Style="width:30px; height:30px" />
+                        }                        <MudText Class="content">@_carpet.Name</MudText>
                         <MudText Class="content">Brand: @_carpet.Brand</MudText>
                         <MudText Class="content">@_carpet.Description</MudText>
                         <MudText Class="content">Width: @_carpet.Width</MudText>

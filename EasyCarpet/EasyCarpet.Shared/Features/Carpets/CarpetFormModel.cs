@@ -17,7 +17,7 @@ namespace EasyCarpet.Shared.Features.Carpets
         public string Brand { get; set; }
         public string Style { get; set; }
         public string Description { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImageFileName { get; set; }
         public UploadRequest UploadRequest { get; set; }
 
         public class CarpetValidator : AbstractValidator<CarpetFormModel>

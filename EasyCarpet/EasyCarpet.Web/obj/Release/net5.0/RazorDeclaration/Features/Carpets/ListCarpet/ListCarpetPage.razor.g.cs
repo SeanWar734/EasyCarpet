@@ -147,7 +147,7 @@ using EasyCarpet.Shared.Features.Carpets;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\ListCarpet\ListCarpetPage.razor"
+#line 53 "C:\Users\swarchuck\source\repos\EasyCarpet\EasyCarpet\EasyCarpet.Web\Features\Carpets\ListCarpet\ListCarpetPage.razor"
        
     private IEnumerable<ListCarpetDto> _carpet;
 
